@@ -13,17 +13,18 @@ VERSION_TAR=$(VERSION).tar.gz
 LOCAL_SOURCES=dist/sod-satisfactory/browser
 REMOTE_SOURCES=$(SOD_PATH_SOURCES)/$(NAME)
 REMOTE_PUBLIC=$(SOD_PATH_PUBLIC)/soddi.de/$(NAME)
+NG=../../node_modules/.bin/ng
 
 all: build
 
 deploy: build upload switch
 
 serve:
-	yarn run serve
+	POSTCSS_ENV=dev $(NG) serve --host 0.0.0.0
 
 build:
 	@echo "$(COLOR_BOLD)Stage: Building$(COLOR_RESET)"
-	yarn run build
+	POSTCSS_ENV=prod $(NG) build --base-href=/satisfactory/
 
 upload:
 	@echo "$(COLOR_BOLD)Stage: Uploading$(COLOR_RESET)"

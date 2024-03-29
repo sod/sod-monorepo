@@ -1,17 +1,7 @@
 {
-  "name": "sod-satisfactory",
+  "name": "sod-monorepo",
   "version": "0.0.0",
-  "scripts": {
-    "ng": "POSTCSS_ENV=prod ng",
-    "serve": "POSTCSS_ENV=dev ng serve --host 0.0.0.0",
-    "serve-inspect": "POSTCSS_ENV=dev node --inspect -- node_modules/.bin/ng serve --host 0.0.0.0",
-    "serve-inspect-brk": "POSTCSS_ENV=dev node --inspect-brk -- node_modules/.bin/ng serve --host 0.0.0.0",
-    "build": "ng build --base-href=/satisfactory/",
-    "deploy": "bin/deploy",
-    "watch": "ng build --watch --configuration development",
-    "pret": "bin/prettier-changed",
-    "lint": "ng lint"
-  },
+  "scripts": {},
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
