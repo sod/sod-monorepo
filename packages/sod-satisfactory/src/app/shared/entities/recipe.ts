@@ -6,10 +6,14 @@ import {RecipeDataDto} from 'src/app/shared/entities/recipe-data-item-dto';
 import {RecipeDto} from 'src/app/shared/entities/recipe-dto';
 
 export class Recipe {
+    readonly producedIn = this.dto.producedIn ?? 'Machine';
     readonly inputs: ItemPackage[] = this.dto.inputs.map((item) => new ItemPackage(item, this));
     readonly outputs: ItemPackage[] = this.dto.outputs.map((item) => new ItemPackage(item, this));
 
-    constructor(private readonly dto: RecipeDto, public readonly parent: Production) {}
+    constructor(
+        private readonly dto: RecipeDto,
+        public readonly parent: Production,
+    ) {}
 
     unwrap(): ItemParentRelationForRecipe {
         return Object.assign(this.parent.unwrap(), {recipe: this.dto});
@@ -27,6 +31,7 @@ export class Recipe {
 
     static fromRecipeDataDto(dto: RecipeDataDto): RecipeDto {
         return {
+            producedIn: dto.producedIn,
             inputs: dto.inputs ?? [],
             outputs: dto.outputs ?? [],
         };

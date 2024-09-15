@@ -8,6 +8,33 @@ import {RecipeDataDto} from 'src/app/shared/entities/recipe-data-item-dto';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {addItemPackage, recipeSelected, removeItemPackage, updateItemPackage} from 'src/app/shared/store/planner/planner.actions';
 
+const recipesDataSorted = recipesData
+    .slice()
+    .filter((item) => !/FICSMAS/.test(item.name))
+    .sort((a, b) => {
+        const getPriority = (item: RecipeDataDto) => {
+            if (item?.inputs?.some((input) => /SAM/.test(input?.itemName))) {
+                return 2;
+            }
+            if (/Alternate/.test(item.name)) {
+                return 1;
+            }
+            return 0;
+        };
+
+        const priorityA = getPriority(a);
+        const priorityB = getPriority(b);
+
+        if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+        }
+
+        const amountA = a?.inputs?.reduce((sum, input) => sum + input.amount, 0) || 0;
+        const amountB = b?.inputs?.reduce((sum, input) => sum + input.amount, 0) || 0;
+
+        return amountA - amountB;
+    });
+
 @Component({
     selector: 'app-item',
     templateUrl: './item.component.html',
@@ -19,7 +46,7 @@ export class ItemComponent {
     @Input() itemPackage?: ItemPackage;
     items: typeof itemNames = itemNames;
     labels: Record<RecipeTarget, string> = {inputs: 'Input', outputs: 'Output or recipe'};
-    recipesData: typeof recipesData = recipesData;
+    recipesData: typeof recipesData = recipesDataSorted;
 
     constructor(public store: Store) {}
 
@@ -34,7 +61,13 @@ export class ItemComponent {
             return;
         }
 
-        this.store.dispatch(addItemPackage({relation: this.recipe.unwrap(), target: this.target, itemPackage: {itemName}}));
+        this.store.dispatch(
+            addItemPackage({
+                relation: this.recipe.unwrap(),
+                target: this.target,
+                itemPackage: {itemName},
+            }),
+        );
     }
 
     remove(itemPackage: ItemPackage): void {

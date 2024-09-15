@@ -49,7 +49,7 @@ export class Production {
         const outputs: ItemPackageDto[] = output ? [ItemPackage.createDto(output)] : [];
 
         return {
-            recipe: {inputs: [], outputs},
+            recipe: {inputs: [], outputs, producedIn: 'Machine'},
         };
     }
 

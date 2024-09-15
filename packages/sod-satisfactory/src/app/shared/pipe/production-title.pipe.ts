@@ -15,7 +15,8 @@ export class ProductionTitlePipe implements PipeTransform {
             clockSpeed.push(production.clockSpeed2 + '%');
         }
 
-        const machineTitle = production.machines + ' Machine' + (production.machines >= 2 ? 's' : '');
+        const producedIn = production.recipe.producedIn ?? 'Machine' + (production.machines >= 2 ? 's' : '');
+        const machineTitle = production.machines + ' ' + producedIn;
         const outputLength = production.recipe.outputs.length;
         const inputLength = production.recipe.inputs.length;
         const title = inputLength || production.machines >= 2 || clockSpeed.length ? machineTitle : outputLength ? 'Belt' : 'Empty';
