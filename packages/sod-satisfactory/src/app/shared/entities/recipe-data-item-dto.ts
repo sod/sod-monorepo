@@ -5,6 +5,7 @@ export interface RecipeDataItemDto {
 
 export interface RecipeDataDto {
     name: string;
+    producedIn: string;
     inputs?: RecipeDataItemDto[];
     outputs?: RecipeDataItemDto[];
 }

@@ -1,7 +1,9 @@
 /**
  * extracted from https://satisfactory-calculator.com/en/items
  * via:
- *   const items = Array.from(document.querySelectorAll('.card-body')).map(item => ({label: item.querySelector('strong')?.innerText, image: item.querySelector('img')?.src})).filter(item => !!item.label)
+ *   const items = Array.from(document.querySelectorAll('.card-body'))
+ *      .map(item => ({label: item.querySelector('strong')?.innerText, image: item.querySelector('img')?.src}))
+ *      .filter(item => !!item.label)
  */
 export const items = [
     {
@@ -37,7 +39,7 @@ export const items = [
         image: '/assets/img/update6/IconDesc_Bauxite_256.webp',
     },
     {
-        label: 'S.A.M. Ore',
+        label: 'SAM',
         image: '/assets/img/update6/SAMOre_256.webp',
     },
     {
@@ -63,6 +65,10 @@ export const items = [
     {
         label: 'Aluminum Ingot',
         image: '/assets/img/update6/IconDesc_AluminiumIngot_256.webp',
+    },
+    {
+        label: 'Ficsite Ingot',
+        image: '/assets/img/update6/IconDesc_FicsiteIngot_256.webp',
     },
     {
         label: 'Concrete',
@@ -137,8 +143,28 @@ export const items = [
         image: '/assets/img/update6/IconDesc_NitricAcid_256.webp',
     },
     {
+        label: 'Dissolved Silica',
+        image: '/assets/img/update6/IconDesc_DissolvedSilica_256.webp',
+    },
+    {
         label: 'Nitrogen Gas',
         image: '/assets/img/update6/IconDesc_NitricAcid_256.webp',
+    },
+    {
+        label: 'Rocket Fuel',
+        image: '/assets/img/update6/IconDesc_RocketFuelPipe_256.webp',
+    },
+    {
+        label: 'Ionized Fuel',
+        image: '/assets/img/update6/IconDesc_IonizedFuel_256.webp',
+    },
+    {
+        label: 'Dark Matter Residue',
+        image: '/assets/img/update6/IconDesc_DarkEnergy_256.webp',
+    },
+    {
+        label: 'Excited Photonic Matter',
+        image: '/assets/img/update6/IconDesc_QuantumEnergy_256.webp',
     },
     {
         label: 'Iron Rod',
@@ -191,6 +217,10 @@ export const items = [
     {
         label: 'Fused Modular Frame',
         image: '/assets/img/update6/IconDesc_FusedModularFrame_256.webp',
+    },
+    {
+        label: 'Ficsite Trigon',
+        image: '/assets/img/update6/IconDesc_FicsiteMesh_256.webp',
     },
     {
         label: 'Fabric',
@@ -257,6 +287,14 @@ export const items = [
         image: '/assets/img/update6/IconDesc_HighSpeedConnector_256.webp',
     },
     {
+        label: 'Reanimated SAM',
+        image: '/assets/img/update6/IconDesc_ReanimatedSam_256.webp',
+    },
+    {
+        label: 'SAM Fluctuator',
+        image: '/assets/img/update6/IconDesc_SamFluctuator_256.webp',
+    },
+    {
         label: 'Computer',
         image: '/assets/img/update6/IconDesc_Computer_256.webp',
     },
@@ -279,6 +317,26 @@ export const items = [
     {
         label: 'Superposition Oscillator',
         image: '/assets/img/update6/IconDesc_SuperPositionOscillator_256.webp',
+    },
+    {
+        label: 'Diamonds',
+        image: '/assets/img/update6/IconDesc_Diamonds_256.webp',
+    },
+    {
+        label: 'Time Crystal',
+        image: '/assets/img/update6/IconDesc_ExoticMatter_256.webp',
+    },
+    {
+        label: 'Dark Matter Crystal',
+        image: '/assets/img/update6/IconDesc_TimeCrystal_256.webp',
+    },
+    {
+        label: 'Singularity Cell',
+        image: '/assets/img/update6/IconDesc_SingularityCell_256.webp',
+    },
+    {
+        label: 'Neural-Quantum Processor',
+        image: '/assets/img/update6/IconDesc_TemporalProcessor_256.webp',
     },
     {
         label: 'Empty Canister',
@@ -361,6 +419,14 @@ export const items = [
         image: '/assets/img/update6/IconDesc_TurboFuel_256.webp',
     },
     {
+        label: 'Packaged Rocket Fuel',
+        image: '/assets/img/update6/IconDesc_PackagedRocketFuel_256.webp',
+    },
+    {
+        label: 'Packaged Ionized Fuel',
+        image: '/assets/img/update6/IconDesc_IonizedRocketFuel_256.webp',
+    },
+    {
         label: 'Uranium Fuel Rod',
         image: '/assets/img/update6/IconDesc_NuclearFuelRod_256.webp',
     },
@@ -389,7 +455,7 @@ export const items = [
         image: '/assets/img/update6/IconDesc_Beacon_256.webp',
     },
     {
-        label: 'Iodine Infused Filter',
+        label: 'Iodine-Infused Filter',
         image: '/assets/img/update6/IconDesc_HazmatFilter_256.webp',
     },
     {
@@ -449,7 +515,7 @@ export const items = [
         image: '/assets/img/update6/IconDesc_NuclearCell_256.webp',
     },
     {
-        label: 'Non-fissile Uranium',
+        label: 'Non-Fissile Uranium',
         image: '/assets/img/update6/IconDesc_NonFissileUranium_256.webp',
     },
     {
@@ -459,6 +525,14 @@ export const items = [
     {
         label: 'Encased Plutonium Cell',
         image: '/assets/img/update6/IconDesc_EncasedPlutoniumCell_256.webp',
+    },
+    {
+        label: 'Ficsonium',
+        image: '/assets/img/update6/IconDesc_FicsoniumCell_256.webp',
+    },
+    {
+        label: 'Ficsonium Fuel Rod',
+        image: '/assets/img/update6/IconDesc_FicsoniumCell_256.webp',
     },
     {
         label: 'Uranium Waste',
@@ -523,6 +597,18 @@ export const items = [
     {
         label: 'Nuclear Pasta',
         image: '/assets/img/update6/IconDesc_NuclearPasta_256.webp',
+    },
+    {
+        label: 'Biochemical Sculptor',
+        image: '/assets/img/update6/IconDesc_BiochemicalSculptor_256.webp',
+    },
+    {
+        label: 'Ballistic Warp Drive',
+        image: '/assets/img/update6/IconDesc_BallisticWarpDrive_256.webp',
+    },
+    {
+        label: 'AI Expansion Server',
+        image: '/assets/img/update6/IconDesc_AIExpension_256.webp',
     },
 ];
 
