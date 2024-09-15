@@ -1,11 +1,20 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import {resolve} from 'node:path';
 import parseDocs from 'satisfactory-docs-parser';
 import {ItemInfo} from 'satisfactory-docs-parser/dist/parsers/parseItems';
 import {ProductionRecipeInfo} from 'satisfactory-docs-parser/dist/parsers/parseRecipes';
+import docsJson from '../../resources/update1_0/Docs.json';
+
+type Docs = typeof docsJson;
 
 const pathFromRoot = (path: string): string => resolve(__dirname, '../..', path);
-const file = fs.readFileSync(pathFromRoot('resources/update1_0/Docs.json'));
+const file = fs.readFileSync(pathFromRoot('resources/update1_0/Docs.json'), {encoding: 'utf-8'});
+const docs = JSON.parse(file.trim());
+
+console.log(docs[0]);
+
+process.exit();
+
 const rawData = parseDocs(file);
 
 function getItemNameMap(docs: ReturnType<typeof parseDocs>): Map<string, string> {
