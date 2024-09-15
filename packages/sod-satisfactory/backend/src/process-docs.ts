@@ -5,7 +5,7 @@ import {ItemInfo} from 'satisfactory-docs-parser/dist/parsers/parseItems';
 import {ProductionRecipeInfo} from 'satisfactory-docs-parser/dist/parsers/parseRecipes';
 
 const pathFromRoot = (path: string): string => resolve(__dirname, '../..', path);
-const file = fs.readFileSync(pathFromRoot('resources/update7/Docs.json'));
+const file = fs.readFileSync(pathFromRoot('resources/update1_0/Docs.json'));
 const rawData = parseDocs(file);
 
 function getItemNameMap(docs: ReturnType<typeof parseDocs>): Map<string, string> {
@@ -26,8 +26,14 @@ function getRecipes(docs: ReturnType<typeof parseDocs>) {
         .filter(([_, recipe]) => recipe.machineCraftable)
         .map(([name, recipe]) => ({
             name: recipe.name,
-            inputs: recipe.ingredients.map((input) => ({itemName: getItemName(input.itemClass), amount: getAmount(input, recipe)})),
-            outputs: recipe.products.map((input) => ({itemName: getItemName(input.itemClass), amount: getAmount(input, recipe)})),
+            inputs: recipe.ingredients.map((input) => ({
+                itemName: getItemName(input.itemClass),
+                amount: getAmount(input, recipe),
+            })),
+            outputs: recipe.products.map((input) => ({
+                itemName: getItemName(input.itemClass),
+                amount: getAmount(input, recipe),
+            })),
         }));
 
     return recipes;
