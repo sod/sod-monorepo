@@ -55,11 +55,11 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Fuel",
-                "amount": 100000
+                "amount": 100
             },
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 75000
+                "amount": 75
             },
             {
                 "itemName": "Sulfur",
@@ -73,7 +73,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Rocket Fuel",
-                "amount": 150000
+                "amount": 150
             },
             {
                 "itemName": "Compacted Coal",
@@ -87,17 +87,17 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Nitric Acid",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [
             {
                 "itemName": "Rocket Fuel",
-                "amount": 100000
+                "amount": 100
             },
             {
                 "itemName": "Compacted Coal",
@@ -111,7 +111,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Rocket Fuel",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -137,7 +137,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Rocket Fuel",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -161,7 +161,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Ionized Fuel",
-                "amount": 200000
+                "amount": 200
             },
             {
                 "itemName": "Compacted Coal",
@@ -181,7 +181,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 100000
+                "amount": 100
             }
         ]
     },
@@ -192,7 +192,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 200000
+                "amount": 200
             }
         ]
     },
@@ -206,7 +206,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 150000
+                "amount": 150
             }
         ],
         "outputs": [
@@ -234,7 +234,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 125000
+                "amount": 125
             }
         ],
         "outputs": [
@@ -244,7 +244,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 125000
+                "amount": 125
             }
         ]
     },
@@ -266,7 +266,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 75000
+                "amount": 75
             }
         ],
         "outputs": [
@@ -276,7 +276,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 75000
+                "amount": 75
             }
         ]
     },
@@ -298,7 +298,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 100000
+                "amount": 100
             }
         ],
         "outputs": [
@@ -308,7 +308,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 100000
+                "amount": 100
             }
         ]
     },
@@ -318,7 +318,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Rocket Fuel",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Power Shard",
@@ -328,7 +328,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Ionized Fuel",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Compacted Coal",
@@ -342,7 +342,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Ionized Fuel",
-                "amount": 80000
+                "amount": 80
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -368,7 +368,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Ionized Fuel",
-                "amount": 80000
+                "amount": 80
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -518,7 +518,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [
@@ -784,7 +784,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 120000
+                "amount": 120
             }
         ]
     },
@@ -804,7 +804,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 120000
+                "amount": 120
             }
         ]
     },
@@ -914,7 +914,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Fuel",
-                "amount": 22500
+                "amount": 22.5
             },
             {
                 "itemName": "Compacted Coal",
@@ -924,7 +924,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 18750
+                "amount": 18.75
             }
         ]
     },
@@ -934,7 +934,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 20000
+                "amount": 20
             },
             {
                 "itemName": "Empty Canister",
@@ -960,7 +960,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 20000
+                "amount": 20
             },
             {
                 "itemName": "Empty Canister",
@@ -1046,13 +1046,13 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
             {
                 "itemName": "Fuel",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Polymer Resin",
@@ -1066,7 +1066,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 40000
+                "amount": 40
             }
         ],
         "outputs": [
@@ -1082,7 +1082,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -1092,7 +1092,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 10000
+                "amount": 10
             }
         ]
     },
@@ -1102,7 +1102,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -1112,7 +1112,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 20000
+                "amount": 20
             }
         ]
     },
@@ -1122,13 +1122,13 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
             {
                 "itemName": "Fuel",
-                "amount": 40000
+                "amount": 40
             }
         ]
     },
@@ -1142,7 +1142,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 20000
+                "amount": 20
             }
         ],
         "outputs": [
@@ -1162,7 +1162,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 40000
+                "amount": 40
             }
         ],
         "outputs": [
@@ -1214,7 +1214,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 200000
+                "amount": 200
             }
         ],
         "outputs": [
@@ -1254,7 +1254,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 150000
+                "amount": 150
             }
         ],
         "outputs": [
@@ -1270,7 +1270,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 200000
+                "amount": 200
             }
         ],
         "outputs": [
@@ -1290,7 +1290,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 100000
+                "amount": 100
             }
         ],
         "outputs": [
@@ -1306,7 +1306,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 37500
+                "amount": 37.5
             },
             {
                 "itemName": "Compacted Coal",
@@ -1316,7 +1316,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 30000
+                "amount": 30
             }
         ]
     },
@@ -1446,7 +1446,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Fuel",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Empty Canister",
@@ -1470,13 +1470,13 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 45000
+                "amount": 45
             }
         ],
         "outputs": [
             {
                 "itemName": "Liquid Biofuel",
-                "amount": 60000
+                "amount": 60
             }
         ]
     },
@@ -1486,7 +1486,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Liquid Biofuel",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Empty Canister",
@@ -1506,7 +1506,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Empty Canister",
@@ -1526,7 +1526,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Empty Canister",
@@ -1546,7 +1546,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Water",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Empty Canister",
@@ -1572,7 +1572,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Liquid Biofuel",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Empty Canister",
@@ -1592,7 +1592,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Fuel",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Empty Canister",
@@ -1612,7 +1612,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Empty Canister",
@@ -1632,7 +1632,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 20000
+                "amount": 20
             },
             {
                 "itemName": "Empty Canister",
@@ -1652,7 +1652,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Water",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Empty Canister",
@@ -1670,7 +1670,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 22500
+                "amount": 22.5
             }
         ],
         "outputs": [
@@ -1710,7 +1710,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Fuel",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -1730,7 +1730,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 37500
+                "amount": 37.5
             }
         ],
         "outputs": [
@@ -1766,7 +1766,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 20000
+                "amount": 20
             }
         ],
         "outputs": [
@@ -1786,7 +1786,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [
@@ -1806,7 +1806,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 24000
+                "amount": 24
             }
         ],
         "outputs": [
@@ -1878,13 +1878,13 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 180000
+                "amount": 180
             }
         ],
         "outputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Silica",
@@ -1898,7 +1898,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 240000
+                "amount": 240
             },
             {
                 "itemName": "Coal",
@@ -1912,7 +1912,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 120000
+                "amount": 120
             }
         ]
     },
@@ -1922,7 +1922,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Empty Canister",
@@ -2008,7 +2008,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Empty Canister",
@@ -2022,7 +2022,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
@@ -2032,7 +2032,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 20000
+                "amount": 20
             }
         ]
     },
@@ -2190,13 +2190,13 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Crude Oil",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Polymer Resin",
@@ -2406,7 +2406,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 180000
+                "amount": 180
             },
             {
                 "itemName": "Petroleum Coke",
@@ -2420,7 +2420,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 105000
+                "amount": 105
             }
         ]
     },
@@ -2430,7 +2430,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Packaged Water",
@@ -2630,7 +2630,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 15000
+                "amount": 15
             }
         ],
         "outputs": [
@@ -2754,11 +2754,11 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Water",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Iron Plate",
@@ -2768,7 +2768,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Nitric Acid",
-                "amount": 30000
+                "amount": 30
             }
         ]
     },
@@ -2786,11 +2786,11 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitric Acid",
-                "amount": 15000
+                "amount": 15
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 15000
+                "amount": 15
             }
         ],
         "outputs": [
@@ -2800,7 +2800,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 15000
+                "amount": 15
             }
         ]
     },
@@ -2874,7 +2874,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Nitric Acid",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -2920,7 +2920,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Nitric Acid",
-                "amount": 20000
+                "amount": 20
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -2934,11 +2934,11 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Fuel",
-                "amount": 15000
+                "amount": 15
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Sulfur",
@@ -2952,7 +2952,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Turbofuel",
-                "amount": 45000
+                "amount": 45
             }
         ]
     },
@@ -2970,7 +2970,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 40000
+                "amount": 40
             }
         ],
         "outputs": [
@@ -2980,7 +2980,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 10000
+                "amount": 10
             }
         ]
     },
@@ -2998,11 +2998,11 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 30000
+                "amount": 30
             },
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 150000
+                "amount": 150
             }
         ],
         "outputs": [
@@ -3018,11 +3018,11 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 50000
+                "amount": 50
             },
             {
                 "itemName": "Alumina Solution",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Aluminum Casing",
@@ -3036,7 +3036,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 30000
+                "amount": 30
             }
         ]
     },
@@ -3102,13 +3102,13 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 50000
+                "amount": 50
             }
         ],
         "outputs": [
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 50000
+                "amount": 50
             }
         ]
     },
@@ -3118,7 +3118,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 40000
+                "amount": 40
             },
             {
                 "itemName": "Empty Canister",
@@ -3188,7 +3188,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 60000
+                "amount": 60
             },
             {
                 "itemName": "Empty Canister",
@@ -3298,13 +3298,13 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 200000
+                "amount": 200
             }
         ],
         "outputs": [
             {
                 "itemName": "Alumina Solution",
-                "amount": 240000
+                "amount": 240
             }
         ]
     },
@@ -3410,7 +3410,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 37500
+                "amount": 37.5
             }
         ],
         "outputs": [
@@ -3442,7 +3442,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 240000
+                "amount": 240
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -3468,7 +3468,7 @@ export const recipesData = [
         "outputs": [
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 240000
+                "amount": 240
             },
             {
                 "itemName": "Empty Fluid Tank",
@@ -3490,11 +3490,11 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 50000
+                "amount": 50
             },
             {
                 "itemName": "Water",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
@@ -3504,7 +3504,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 50000
+                "amount": 50
             }
         ]
     },
@@ -3542,11 +3542,11 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitric Acid",
-                "amount": 24000
+                "amount": 24
             },
             {
                 "itemName": "Fuel",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -3570,11 +3570,11 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitric Acid",
-                "amount": 15000
+                "amount": 15
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 25000
+                "amount": 25
             }
         ],
         "outputs": [
@@ -3584,7 +3584,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 40000
+                "amount": 40
             }
         ]
     },
@@ -3614,17 +3614,17 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 50000
+                "amount": 50
             },
             {
                 "itemName": "Water",
-                "amount": 100000
+                "amount": 100
             }
         ],
         "outputs": [
             {
                 "itemName": "Fuel",
-                "amount": 100000
+                "amount": 100
             }
         ]
     },
@@ -3642,7 +3642,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitrogen Gas",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
@@ -3854,7 +3854,7 @@ export const recipesData = [
         "inputs": [
             {
                 "itemName": "Dissolved Silica",
-                "amount": 120000
+                "amount": 120
             },
             {
                 "itemName": "Limestone",
@@ -3862,7 +3862,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 100000
+                "amount": 100
             }
         ],
         "outputs": [
@@ -3872,7 +3872,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 80000
+                "amount": 80
             }
         ]
     },
@@ -3886,7 +3886,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Nitric Acid",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [
@@ -3896,7 +3896,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dissolved Silica",
-                "amount": 60000
+                "amount": 60
             }
         ]
     },
@@ -3930,7 +3930,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [
@@ -3990,7 +3990,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 25000
+                "amount": 25
             }
         ],
         "outputs": [
@@ -4030,7 +4030,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Sulfuric Acid",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -4406,7 +4406,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Fuel",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -4842,7 +4842,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 200000
+                "amount": 200
             }
         ],
         "outputs": [
@@ -4870,7 +4870,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 50000
+                "amount": 50
             }
         ],
         "outputs": [
@@ -4880,7 +4880,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 50000
+                "amount": 50
             }
         ]
     },
@@ -5098,7 +5098,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
@@ -5108,7 +5108,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 60000
+                "amount": 60
             }
         ]
     },
@@ -5286,7 +5286,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Water",
-                "amount": 30000
+                "amount": 30
             }
         ],
         "outputs": [
@@ -5334,7 +5334,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Excited Photonic Matter",
-                "amount": 60000
+                "amount": 60
             }
         ],
         "outputs": [
@@ -5344,7 +5344,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Dark Matter Residue",
-                "amount": 60000
+                "amount": 60
             }
         ]
     },
@@ -5458,7 +5458,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Turbofuel",
-                "amount": 15000
+                "amount": 15
             }
         ],
         "outputs": [
@@ -5590,7 +5590,7 @@ export const recipesData = [
             },
             {
                 "itemName": "Heavy Oil Residue",
-                "amount": 10000
+                "amount": 10
             }
         ],
         "outputs": [

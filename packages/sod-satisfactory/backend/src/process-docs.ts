@@ -33,7 +33,7 @@ interface ItemRaw {
     mRememberPickUp: string; //'False';
     mEnergyValue: string; //'0.000000';
     mRadioactiveDecay: string; //'0.000000';
-    mForm: string; //'RF_SOLID';
+    mForm: 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS'; //'RF_SOLID';
     mGasType: string; //'GT_NORMAL';
     mSmallIcon: string; //'Texture2D /Game/FactoryGame/Resource/Parts/AlienProtein/UI/IconDesc_AlienProtein_256.IconDesc_AlienProtein_256';
     mPersistentBigIcon: string; //'Texture2D /Game/FactoryGame/Resource/Parts/AlienProtein/UI/IconDesc_AlienProtein_256.IconDesc_AlienProtein_256';
@@ -108,7 +108,13 @@ function mapBuildables(items: Map<string, ItemRaw>, buildablesRaw: BuildableRaw[
         const outputs: {ItemClass: string; Amount: string}[] = parseCollection(dto.mProduct ?? '');
         const producedIn: string[] = parseCollection(dto.mProducedIn ?? '');
         const craftTime = +dto.mManufactoringDuration;
-        const normalizeAmount = (quantity: number) => +((quantity * 60) / craftTime).toFixed(2);
+        const normalizeAmount = (item: {ItemClass: string; Amount: string}) => {
+            const itemClass = getItem(items, item.ItemClass);
+            const itemAmount = +item.Amount;
+            const pipeableOffset = ['RF_GAS', 'RF_LIQUID'].includes(itemClass.mForm) ? 1000 : 1;
+
+            return +((itemAmount * 60) / craftTime / pipeableOffset).toFixed(2);
+        };
 
         return {
             name: dto.mDisplayName,
@@ -116,22 +122,22 @@ function mapBuildables(items: Map<string, ItemRaw>, buildablesRaw: BuildableRaw[
             inputs:
                 inputs?.map((input) => ({
                     itemName: getItem(items, input.ItemClass).mDisplayName,
-                    amount: normalizeAmount(+input.Amount),
+                    amount: normalizeAmount(input),
                 })) ?? [],
             outputs:
                 outputs?.map((output) => ({
                     itemName: getItem(items, output.ItemClass).mDisplayName,
-                    amount: normalizeAmount(+output.Amount),
+                    amount: normalizeAmount(output),
                 })) ?? [],
         };
     });
 }
 
-function getItem(items: Map<string, ItemRaw>, ItemClass: string): Pick<ItemRaw, 'mDisplayName'> {
+function getItem(items: Map<string, ItemRaw>, ItemClass: string): Pick<ItemRaw, 'mDisplayName' | 'mForm'> {
     const name = ItemClass.split('.')
         .pop()
         ?.replace(/['"].*$/, '');
-    return items.get(name!) ?? {mDisplayName: `unknown<name:${name},dto:${ItemClass}>`};
+    return items.get(name!) ?? {mDisplayName: `unknown<name:${name},dto:${ItemClass}>`, mForm: 'unknown'};
 }
 
 function mapItems(itemsRaw: ItemRaw[]): Map<string, ItemRaw> {
