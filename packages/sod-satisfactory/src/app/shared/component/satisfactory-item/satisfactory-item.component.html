@@ -8,17 +8,17 @@
         <ng-container *ngSwitchCase="'yes'">
             <span class="text-warning">
                 <i class="bi bi-x-circle"></i>
-                {{ itemPackage | amountWithModifiers }}
+                {{ itemPackage | amountWithModifiers: target }}
             </span>
         </ng-container>
         <ng-container *ngSwitchCase="'covered'">
             <span class="text-success">
                 <i class="bi bi-check2-circle"></i>
-                {{ itemPackage | amountWithModifiers }}
+                {{ itemPackage | amountWithModifiers: target }}
             </span>
         </ng-container>
         <ng-container *ngSwitchDefault>
-            {{ itemPackage | amountWithModifiers }}
+            {{ itemPackage | amountWithModifiers: target }}
         </ng-container>
     </ng-container>
 </div>

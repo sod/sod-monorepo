@@ -5,7 +5,7 @@ import {ItemPackage} from 'src/app/shared/entities/item-package';
     name: 'amountWithModifiers',
 })
 export class AmountWithModifiersPipe implements PipeTransform {
-    transform(value?: ItemPackage): string {
-        return value?.parent.parent.multiply(value?.amount)?.toFixed(1) ?? '';
+    transform(value: ItemPackage | undefined, target: 'inputs' | 'outputs'): string {
+        return value?.parent.parent.multiply(value?.amount, target)?.toFixed(1) ?? '';
     }
 }

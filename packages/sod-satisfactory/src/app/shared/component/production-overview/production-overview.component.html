@@ -46,14 +46,10 @@
             <i class="bi bi-arrow-right"></i>
         </div>
         <div class="col-6">
-            <app-satisfactory-items
-                [values]="production.recipe.inputs"
-                [productionInputs]="productionInputs"
-                align="left"
-            ></app-satisfactory-items>
+            <app-satisfactory-items [values]="production.recipe.inputs" [productionInputs]="productionInputs" [target]="'inputs'" />
         </div>
         <div class="col-6">
-            <app-satisfactory-items [values]="production.recipe.outputs" align="right"></app-satisfactory-items>
+            <app-satisfactory-items [values]="production.recipe.outputs" [target]="'outputs'" />
         </div>
     </div>
 </div>

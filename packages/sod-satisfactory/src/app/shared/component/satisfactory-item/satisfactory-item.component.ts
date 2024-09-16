@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
+import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
 
 @Component({
@@ -10,5 +11,6 @@ import {ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
 export class SatisfactoryItemComponent {
     @Input() itemPackage!: ItemPackage;
     @Input() productionInputs?: ProductionInputs;
+    @Input({required: true}) target!: RecipeTarget;
     @Input() theme: 'name-inline' | 'name-tooltip' = 'name-inline';
 }

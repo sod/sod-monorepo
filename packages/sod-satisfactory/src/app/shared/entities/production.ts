@@ -9,6 +9,7 @@ export class Production {
     readonly recipe: Recipe = new Recipe(this.dto.recipe, this);
     readonly clockSpeed1: number = this.dto.clockSpeed1 ?? 100;
     readonly clockSpeed2: number = this.dto.clockSpeed2 ?? 100;
+    readonly somersloop: boolean = this.dto.somersloop ?? false;
     readonly machines: number = this.dto.machines ?? 1;
     readonly built: boolean = this.dto.built ?? false;
 
@@ -21,7 +22,7 @@ export class Production {
         return {production: this.dto};
     }
 
-    getModifier(): number {
+    private getModifier(): number {
         const modifier1 = (this.clockSpeed1 ?? 100) / 100;
         const modifier2 = (this.clockSpeed2 ?? 100) / 100;
         const modifier3 = this.machines ?? 1;
@@ -29,8 +30,10 @@ export class Production {
         return modifier1 * modifier2 * modifier3;
     }
 
-    multiply(amount?: number): number | undefined {
-        return typeof amount === 'number' ? amount * this.getModifier() : undefined;
+    multiply(amount: number | undefined, type: 'inputs' | 'outputs'): number | undefined {
+        const somersloop = type === 'outputs' && this.somersloop ? 2 : 1;
+
+        return typeof amount === 'number' ? amount * this.getModifier() * somersloop : undefined;
     }
 
     hasRecipes(): boolean {

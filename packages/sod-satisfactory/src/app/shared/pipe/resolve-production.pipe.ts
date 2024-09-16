@@ -12,7 +12,11 @@ export class ProductionInput {
     amount: number;
     outputProductionIndex?: number;
 
-    constructor(public inputs: ItemPackage[], public outputs: ItemPackage[], public inputCoveredAmount?: number) {
+    constructor(
+        public inputs: ItemPackage[],
+        public outputs: ItemPackage[],
+        public inputCoveredAmount?: number,
+    ) {
         this.itemName = inputs[0]?.itemName ?? '';
         this.amount = this.getAmount(inputs, outputs);
         this.outputProductionIndex = outputs[0]?.parent.parent.index;
@@ -29,8 +33,8 @@ export class ProductionInput {
     }
 
     private getAmount(inputs: ItemPackage[], outputs: ItemPackage[]): number {
-        const inputAmount = inputs.reduce((sum, input) => sum + (input.parent.parent.multiply(input.amount) ?? 0), 0);
-        const outputAmount = outputs.reduce((sum, output) => sum + (output.parent.parent.multiply(output.amount) ?? 0), 0);
+        const inputAmount = inputs.reduce((sum, input) => sum + (input.parent.parent.multiply(input.amount, 'inputs') ?? 0), 0);
+        const outputAmount = outputs.reduce((sum, output) => sum + (output.parent.parent.multiply(output.amount, 'outputs') ?? 0), 0);
 
         return inputAmount - outputAmount;
     }

@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
+import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {ProductionInput, ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
 import {GlobalState} from 'src/app/shared/store/global-state';
 import {addProductionWithOutputNameClicked, editProductionClicked} from 'src/app/shared/store/planner/planner.actions';
@@ -13,7 +14,7 @@ import {addProductionWithOutputNameClicked, editProductionClicked} from 'src/app
 export class SatisfactoryItemsComponent {
     @Input() values!: ItemPackage[];
     @Input() productionInputs?: ProductionInputs;
-    @Input() align: 'left' | 'right' = 'left';
+    @Input({required: true}) target!: RecipeTarget;
 
     constructor(private store: Store<GlobalState>) {}
 
@@ -33,4 +34,6 @@ export class SatisfactoryItemsComponent {
     name(index: number, itemPackage: ItemPackage): string {
         return `${index}-${itemPackage.itemName}`;
     }
+
+    protected readonly outerHeight = outerHeight;
 }

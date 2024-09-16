@@ -1,4 +1,4 @@
-<div class="row gx-2" *ngIf="{hasSuffix: (itemPackage?.parent?.parent?.getModifier() ?? 1) !== 1} as state">
+<div class="row gx-2" *ngIf="{hasSuffix: (itemPackage?.parent?.parent?.multiply(1, target) ?? 1) !== 1} as state">
     <app-item class="col" [itemPackage]="itemPackage" [recipe]="recipe" [target]="target"></app-item>
     <div class="col-5 col-lg-4" *ngIf="itemPackage">
         <app-input class="position-relative" [label]="'per minute'">
@@ -10,7 +10,7 @@
                 (ngModelChange)="itemPackage && +$event > 0 && updateItemPackageAmount(+$event, itemPackage)"
             />
 
-            <span class="input-suffix text-muted" *ngIf="state.hasSuffix">= {{ itemPackage | amountWithModifiers }}</span>
+            <span class="input-suffix text-muted" *ngIf="state.hasSuffix">= {{ itemPackage | amountWithModifiers: target }}</span>
         </app-input>
     </div>
 </div>

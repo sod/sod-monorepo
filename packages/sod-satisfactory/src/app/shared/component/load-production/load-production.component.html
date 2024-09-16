@@ -14,7 +14,7 @@
                     class="production__item rounded border shadow-sm d-inline-block p-1 me-1 bg-body text-body"
                     *ngFor="let output of production.outputs"
                 >
-                    <app-satisfactory-item class="d-block w-100" [itemPackage]="output" [theme]="'name-tooltip'"></app-satisfactory-item>
+                    <app-satisfactory-item class="d-block w-100" [itemPackage]="output" [target]="'outputs'" [theme]="'name-tooltip'" />
                 </div>
             </div>
         </ng-container>
@@ -25,4 +25,4 @@
     </div>
 </ng-template>
 
-<ng-template #empty> No productions found </ng-template>
+<ng-template #empty> No productions found</ng-template>

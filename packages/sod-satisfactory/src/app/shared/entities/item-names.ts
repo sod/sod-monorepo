@@ -610,6 +610,10 @@ export const items = [
         label: 'AI Expansion Server',
         image: '/assets/img/update6/IconDesc_AIExpension_256.webp',
     },
+    {
+        label: 'Somersloop',
+        image: '/assets/img/update6/Somersloop.webp',
+    },
 ];
 
 export const itemImage = new Map(items.map((item) => [item.label, item.image]));

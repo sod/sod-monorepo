@@ -55,10 +55,10 @@ export class ItemComponent {
     selected = signal<any>(undefined);
     needle = signal('');
     suggestions = computed(() => {
-        const items = this.searchService.search(this.needle(), itemNames, {
+        const items = this.searchService.search(this.needle() || this.itemPackage?.itemName, itemNames, {
             limit: 5,
         });
-        const recipes = this.searchService.search(this.needle(), recipesDataSorted, {
+        const recipes = this.searchService.search(this.needle() || this.itemPackage?.itemName, recipesDataSorted, {
             matchesFuzzy: (dto) => this.stringifyRecipe(dto),
             matchesPerfect: (dto) => this.itemNamesAsArray(dto),
             limit: 15,

@@ -1,4 +1,4 @@
-<div class="row gx-2" [class.justify-content-end]="align === 'right'">
+<div class="row gx-2" [class.justify-content-end]="target === 'outputs'">
     <div class="col-6 d-flex mb-2" *ngFor="let itemPackage of values; trackBy: name">
         <div
             *ngIf="{input: productionInputs?.get(itemPackage.itemName)} | sodAnimate: {strategy: 'truthy'} | ngrxPush as state"
@@ -12,7 +12,8 @@
                 class="d-block w-100"
                 [itemPackage]="itemPackage"
                 [productionInputs]="productionInputs"
-            ></app-satisfactory-item>
+                [target]="target"
+            />
         </div>
     </div>
 </div>

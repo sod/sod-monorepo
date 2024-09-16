@@ -20,7 +20,11 @@ export class ProductionTitlePipe implements PipeTransform {
         const outputLength = production.recipe.outputs.length;
         const inputLength = production.recipe.inputs.length;
         const title = inputLength || production.machines >= 2 || clockSpeed.length ? machineTitle : outputLength ? 'Belt' : 'Empty';
-        const subtitle = clockSpeed.length ? 'at ' + clockSpeed.join(' + ') : '';
+        let subtitle = clockSpeed.length ? 'at ' + clockSpeed.join(' + ') : '';
+
+        if (production.somersloop) {
+            subtitle += ' + Somersloop';
+        }
 
         return {title, subtitle};
     }

@@ -43,6 +43,22 @@
                 (ngModelChange)="updateProduction(production, {clockSpeed2: $event || undefined})"
             />
         </app-input>
+
+        <button
+            class="btn w-100 rounded my-2 d-flex align-items-center cursor-pointer"
+            [ngClass]="production.somersloop ? 'btn-outline-success' : 'btn-dark'"
+            (click)="updateProduction(production, {somersloop: !production.somersloop})"
+        >
+            <i class="bi" [ngClass]="!production.somersloop ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+
+            <app-satisfactory-item-image
+                [heightPercent]="100"
+                [itemPackage]="{itemName: 'Somersloop'}"
+                class="mx-2"
+                style="width: 1.5rem"
+            ></app-satisfactory-item-image>
+            <div class="flex-grow-1 text-start">Use Somersloop</div>
+        </button>
     </div>
 
     <div class="d-flex p-3">

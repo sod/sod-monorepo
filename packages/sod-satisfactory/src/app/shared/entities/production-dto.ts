@@ -5,6 +5,7 @@ export const productionDtoSchema = z.object({
     recipe: recipeDtoSchema,
     clockSpeed1: z.number().optional(),
     clockSpeed2: z.number().optional(),
+    somersloop: z.boolean().optional(),
     machines: z.number().optional(),
     built: z.boolean().optional(),
 });
