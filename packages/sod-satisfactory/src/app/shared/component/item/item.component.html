@@ -6,6 +6,7 @@
             type="search"
             [ngModel]="itemPackage?.itemName ?? ''"
             (input)="itemSelected(element.value, itemPackage)"
+            (focus)="needle.set(element.value)"
             (blur)="itemPackage?.itemName === '' && remove(itemPackage!)"
         />
     </app-input>
