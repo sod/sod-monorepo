@@ -1,11 +1,15 @@
-import {Component, Input} from '@angular/core';
+import {Component, computed, ElementRef, Input, signal, ViewChild} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {Store} from '@ngrx/store';
 import {recipesData} from 'src/app/generated/recipes-data';
+import {DropdownCommand, DropdownComponent} from 'src/app/shared/component/dropdown/dropdown.component';
 import {itemNames} from 'src/app/shared/entities/item-names';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
 import {Recipe} from 'src/app/shared/entities/recipe';
 import {RecipeDataDto} from 'src/app/shared/entities/recipe-data-item-dto';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
+import {ItemSelectorService} from 'src/app/shared/service/item-selector-service';
+import {SearchService} from 'src/app/shared/service/search-service';
 import {addItemPackage, recipeSelected, removeItemPackage, updateItemPackage} from 'src/app/shared/store/planner/planner.actions';
 
 const recipesDataSorted = recipesData
@@ -44,13 +48,37 @@ export class ItemComponent {
     @Input() recipe!: Recipe;
     @Input() target!: RecipeTarget;
     @Input() itemPackage?: ItemPackage;
-    items: typeof itemNames = itemNames;
-    labels: Record<RecipeTarget, string> = {inputs: 'Input', outputs: 'Output or recipe'};
-    recipesData: typeof recipesData = recipesDataSorted;
+    @ViewChild(DropdownComponent) dropdown!: DropdownComponent;
+    @ViewChild('element') input!: ElementRef<HTMLInputElement>;
 
-    constructor(public store: Store) {}
+    labels: Record<RecipeTarget, string> = {inputs: 'Input', outputs: 'Output or recipe'};
+    selected = signal<any>(undefined);
+    needle = signal('');
+    suggestions = computed(() => {
+        const items = this.searchService.search(this.needle(), itemNames, {
+            limit: 5,
+        });
+        const recipes = this.searchService.search(this.needle(), recipesDataSorted, {
+            matchesFuzzy: (dto) => this.stringifyRecipe(dto),
+            matchesPerfect: (dto) => this.itemNamesAsArray(dto),
+            limit: 15,
+        });
+
+        return {items, recipes, all: [...items, ...recipes]};
+    });
+    suggestions$ = toObservable(this.suggestions);
+
+    constructor(
+        public store: Store,
+        private searchService: SearchService,
+        private itemSelectorService: ItemSelectorService,
+        private elementRef: ElementRef,
+    ) {}
 
     itemSelected(itemName: string | RecipeDataDto, itemPackage?: ItemPackage): void {
+        this.needle.set(typeof itemName === 'string' ? itemName : itemPackage?.itemName ?? '');
+        this.selected.set(undefined);
+
         if (typeof itemName !== 'string') {
             this.store.dispatch(recipeSelected({relation: this.recipe.unwrap(), recipe: itemName}));
             return;
@@ -70,15 +98,33 @@ export class ItemComponent {
         );
     }
 
+    onKeyboard(command: DropdownCommand): void {
+        if (command === 'submit') {
+            this.itemSelected(this.selected(), this.itemPackage);
+            this.dropdown.close();
+            this.input.nativeElement.blur();
+            return;
+        }
+
+        const next = this.itemSelectorService.select(command, this.selected(), this.suggestions().all);
+        this.selected.set(next);
+        setTimeout(() => {
+            this.elementRef.nativeElement.querySelector('.dropdown-item.active')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        }, 1);
+    }
+
     remove(itemPackage: ItemPackage): void {
         this.store.dispatch(removeItemPackage({relation: itemPackage.unwrap()}));
     }
 
-    stringifyRecipe(object?: RecipeDataDto): string {
+    private stringifyRecipe(object?: RecipeDataDto): string {
         return `${object?.name ?? ''} ` + (object?.[this.target]?.map((output) => output.itemName).join(' ') ?? 'unknown');
     }
 
-    itemNamesAsArray(object?: RecipeDataDto): string[] {
+    private itemNamesAsArray(object?: RecipeDataDto): string[] {
         return object?.[this.target]?.map((output) => output.itemName) ?? [];
     }
 }
