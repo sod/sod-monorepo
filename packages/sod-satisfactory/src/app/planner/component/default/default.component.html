@@ -24,7 +24,9 @@
 
         <div class="mt-5">
             <app-action-add-production class="mb-4 d-block"></app-action-add-production>
-            <app-action-production *ngIf="productions.length"></app-action-production>
+            <app-action-production
+                *ngIf="productions.length || (productionsService.productions$ | ngrxPush)?.length"
+            ></app-action-production>
         </div>
     </div>
 

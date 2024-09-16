@@ -3,6 +3,7 @@ import {Store} from '@ngrx/store';
 import {sortBy} from 'lodash-es';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {ProductionsService} from 'src/app/shared/service/productions-service';
 import {TrackByService} from 'src/app/shared/service/track-by-service';
 import {Production} from '../../../shared/entities/production';
 import {ProductionInput, ProductionInputs} from '../../../shared/pipe/resolve-production.pipe';
@@ -31,6 +32,7 @@ export class DefaultComponent {
     constructor(
         private store: Store<GlobalState>,
         public trackByService: TrackByService,
+        public productionsService: ProductionsService,
     ) {}
 
     isMissing(inputs: ProductionInputs): ProductionInput[] | undefined {
