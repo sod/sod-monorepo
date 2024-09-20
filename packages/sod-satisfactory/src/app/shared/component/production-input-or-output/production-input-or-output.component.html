@@ -1,6 +1,6 @@
 <div class="p-3">
     <h6>{{ title[target] }}</h6>
-    @for (input of production.recipe[target] | plusOneUndefined; track trackByService.index($index, input)) {
+    @for (input of production.recipe[target] | plusOneUndefined; track $index) {
         <div class="mb-2 {{ selector + target }}">
             <app-item-package [itemPackage]="input" [recipe]="production.recipe" [target]="target"></app-item-package>
         </div>

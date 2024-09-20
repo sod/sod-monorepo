@@ -8,12 +8,12 @@
             <div class="col-md-6">
                 @if (productions.length) {
                     <h4>Machines</h4>
-                    @for (production of productions; track trackByService.index(index, production); let index = $index) {
+                    @for (production of productions; track $index) {
                         @if (production.hasRecipes()) {
                             <app-production-overview
                                 [production]="production"
                                 [productionInputs]="productionInputs"
-                                [positionInList]="index"
+                                [positionInList]="$index"
                                 class="mb-3 d-block"
                             ></app-production-overview>
                         }

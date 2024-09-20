@@ -1,7 +1,6 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 import {Production} from 'src/app/shared/entities/production';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
-import {TrackByService} from 'src/app/shared/service/track-by-service';
 import {triggerFocus} from '../../function/trigger-focus';
 
 @Component({
@@ -15,8 +14,6 @@ export class ProductionInputOrOutputComponent implements AfterViewInit {
     @Input() autofocus?: boolean;
     selector = 'item-or-recipe-finder';
     title: Record<RecipeTarget, string> = {inputs: 'Input', outputs: 'Output'};
-
-    constructor(public trackByService: TrackByService) {}
 
     ngAfterViewInit() {
         if (this.autofocus) {
