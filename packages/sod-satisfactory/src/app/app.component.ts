@@ -1,12 +1,10 @@
-import {AsyncPipe, DOCUMENT, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgClass, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, effect, HostListener, Inject, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {PushPipe, RenderScheduler} from '@ngrx/component';
-import {filter} from 'rxjs';
-import {z} from 'zod';
-import {LocalStorageService} from './shared/service/local-storage-service';
-
-const ThemeSchema = z.enum(['dark', 'light']);
+import {BehaviorSubject, filter} from 'rxjs';
+import {ModalComponent} from 'src/app/shared/component/modal/modal.component';
+import {SettingsService} from 'src/app/shared/service/settings-service';
 
 @Component({
     selector: 'app-root',
@@ -15,7 +13,7 @@ const ThemeSchema = z.enum(['dark', 'light']);
     providers: [RenderScheduler],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [RouterOutlet, NgTemplateOutlet, PushPipe, AsyncPipe],
+    imports: [RouterOutlet, NgTemplateOutlet, PushPipe, AsyncPipe, ModalComponent, NgClass],
 })
 export class AppComponent implements OnInit {
     @HostListener('window:keydown')
@@ -23,17 +21,18 @@ export class AppComponent implements OnInit {
         this.renderScheduler.schedule();
     }
 
-    protected theme = this.localStorageService.getStrictStore('theme', ThemeSchema, () => 'dark');
-    protected currentTheme = this.theme.toSignal();
+    theme = this.settingsService.theme;
+    hideItemNames = this.settingsService.hideItemNames;
+    showSettings$ = new BehaviorSubject(false);
 
     constructor(
         private readonly router: Router,
         private readonly renderScheduler: RenderScheduler,
-        private readonly localStorageService: LocalStorageService,
+        private readonly settingsService: SettingsService,
         @Inject(DOCUMENT) private readonly document: Document,
     ) {
         effect(() => {
-            this.document.documentElement.setAttribute('data-bs-theme', this.currentTheme());
+            this.document.documentElement.setAttribute('data-bs-theme', this.settingsService.theme());
         });
     }
 

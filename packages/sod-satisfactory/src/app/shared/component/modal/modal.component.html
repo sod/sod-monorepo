@@ -1,5 +1,5 @@
 @if (active$ | sodAnimate | async; as active) {
-    <div class="modal fade d-block non-interactive" [class.show]="active.enter && !active.leave" role="dialog">
+    <div class="modal modal-lg fade d-block non-interactive" [class.show]="active.enter && !active.leave" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content interactive">
                 <ng-container *ngTemplateOutlet="content; context: {$implicit: active.value}"></ng-container>

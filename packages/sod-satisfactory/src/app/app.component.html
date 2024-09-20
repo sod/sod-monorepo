@@ -9,20 +9,48 @@
         <br />
         Recipes based on satisfactory 1.0
         <br />
-        Theme:
-        <ng-container
-            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'dark', checked: (theme.observable | async) === 'dark'}"
-        ></ng-container>
-        or
-        <ng-container
-            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'light', checked: (theme.observable | async) === 'light'}"
-        ></ng-container>
+        <button class="btn btn-outline-secondary" (click)="showSettings$.next(!showSettings$.value)">Open Settings ...</button>
     </div>
 </div>
 
-<ng-template #themeTemplate let-value let-checked="checked">
-    <a role="button" (click)="$event.preventDefault(); theme.set(value)" href="#" [class.link-secondary]="!checked">{{ value }}</a>
-    @if (checked) {
-        <i class="bi bi bi-check2-circle text-success"></i>
-    }
+<app-modal [content]="settings" [active$]="showSettings$"></app-modal>
+
+<ng-template #settings>
+    <div class="m-4">
+        <h1>Settings</h1>
+        <div class="row mb-2">
+            <div class="col-2 align-self-center">Theme:</div>
+            <div class="col">
+                <ng-container *ngTemplateOutlet="option; context: {$implicit: 'dark', signal: theme, value: 'dark'}"></ng-container>
+                or
+                <ng-container *ngTemplateOutlet="option; context: {$implicit: 'light', signal: theme, value: 'light'}"></ng-container>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-2 align-self-center">Item Names:</div>
+            <div class="col">
+                <ng-container
+                    *ngTemplateOutlet="option; context: {$implicit: 'Hide Item Names', signal: hideItemNames, value: true}"
+                ></ng-container>
+                or
+                <ng-container
+                    *ngTemplateOutlet="option; context: {$implicit: 'Show Item Names', signal: hideItemNames, value: false}"
+                ></ng-container>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #option let-title let-signal="signal" let-value="value">
+    <button
+        class="btn"
+        role="button"
+        [ngClass]="signal() === value ? 'btn-success' : 'btn-outline-secondary'"
+        (click)="$event.preventDefault(); signal.set(value)"
+    >
+        @if (signal() === value) {
+            <i class="bi bi-check2-circle mr-2"> </i>
+        }
+        <span>{{ title }}</span>
+    </button>
 </ng-template>

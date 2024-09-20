@@ -1,19 +1,12 @@
-import {Injectable, Signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {Observable, Subject, concat, defer, of} from 'rxjs';
-import {ZodSchema, z} from 'zod';
+import {Injectable, signal, WritableSignal} from '@angular/core';
+import {onChanges, skipFirst} from 'src/app/shared/function/signal';
+import {z, ZodSchema} from 'zod';
 import {JsonService} from './json-service';
 
 export interface LocalStorageStore<T> {
     set: (data: T) => undefined;
     get: () => T | undefined;
     delete: () => undefined;
-}
-
-export interface LocalStorageStoreWithInitializer<T> extends Pick<LocalStorageStore<T>, 'set' | 'delete'> {
-    get: () => T;
-    observable: Observable<T>;
-    toSignal: () => Signal<T>;
 }
 
 @Injectable({providedIn: 'root'})
@@ -38,7 +31,7 @@ export class LocalStorageService {
         namespace: string,
         schema: Z,
         initialValue: INIT,
-    ): LocalStorageStoreWithInitializer<T> {
+    ): WritableSignal<T> {
         const unsafeStore = this.getStore<unknown>(namespace);
         const validate = (data: unknown, errorPrefix?: string): data is T => {
             const result = schema.safeParse(data);
@@ -53,37 +46,28 @@ export class LocalStorageService {
             return result.success;
         };
 
-        const change$ = new Subject<T>();
-        const observable: Observable<T> = concat(
-            defer(() => of(safeStore.get())),
-            change$,
-        );
+        const safeStoreSet = (data: T): undefined => {
+            if (validate(data, 'localStorage.getStrictStore().set(...): ')) {
+                unsafeStore.set(data);
+            }
+        };
 
-        const safeStore = {
-            delete: (): undefined => {
-                unsafeStore.delete();
-                const value = initialValue();
-                change$.next(value);
-            },
-            set: (data: T): undefined => {
-                if (validate(data, 'localStorage.getStrictStore().set(...): ')) {
-                    unsafeStore.set(data);
-                    change$.next(data);
-                }
-            },
-            get: (): T => {
-                const data = unsafeStore.get();
-                if (data !== undefined && validate(data, 'localStorage.getStrictStore().set(...): ')) {
-                    return data;
-                }
+        const safeStoreGet = (): T => {
+            const data = unsafeStore.get();
+            if (data !== undefined && validate(data, 'localStorage.getStrictStore().set(...): ')) {
+                return data;
+            }
 
-                return initialValue();
-            },
-            observable,
-            toSignal: () => toSignal(observable, {requireSync: true}),
-        } satisfies LocalStorageStoreWithInitializer<T>;
+            return initialValue();
+        };
 
-        return safeStore;
+        const writable = signal<T>(safeStoreGet());
+
+        onChanges([skipFirst(writable)], (value) => {
+            safeStoreSet(value);
+        });
+
+        return writable;
     }
 
     set(key: string, value: any): void {

@@ -1,8 +1,9 @@
 <app-satisfactory-item-image
+    [attr.data-tooltip]="hideItemNames() ? itemPackage.itemName : null"
     [heightPercent]="70"
     [itemPackage]="itemPackage"
-    [attr.title]="itemPackage.itemName"
 ></app-satisfactory-item-image>
+
 @if ({input: productionInputs?.get(itemPackage.itemName)}; as state) {
     <div class="text-center mt-2">
         @switch (state.input?.isMissing()) {
@@ -19,11 +20,14 @@
                 </span>
             }
             @default {
-                {{ itemPackage | amountWithModifiers: target }}
+                <span>
+                    {{ itemPackage | amountWithModifiers: target }}
+                </span>
             }
         }
     </div>
 }
-@if (theme === 'name-inline') {
+
+@if (theme === 'name-inline' && !hideItemNames()) {
     <div class="text-center text-muted">{{ itemPackage.itemName }}</div>
 }

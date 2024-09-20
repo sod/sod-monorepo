@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {Production} from 'src/app/shared/entities/production';
 import {ProductionDto} from 'src/app/shared/entities/production-dto';
+import {IsThemePipe} from 'src/app/shared/pipe/is-theme.pipe';
 import {GlobalState} from 'src/app/shared/store/global-state';
 import {closeProductionClicked, removeProductionClicked, updateProductionClicked} from 'src/app/shared/store/planner/planner.actions';
 import {InputControlDirective} from '../../directive/input-control.directive';
@@ -23,6 +24,7 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
         InputControlDirective,
         NgClass,
         SatisfactoryItemImageComponent,
+        IsThemePipe,
     ],
 })
 export class ProductionComponent {

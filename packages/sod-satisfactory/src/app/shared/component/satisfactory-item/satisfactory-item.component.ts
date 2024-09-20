@@ -3,6 +3,7 @@ import {ItemPackage} from 'src/app/shared/entities/item-package';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {AmountWithModifiersPipe} from 'src/app/shared/pipe/amount-with-modifiers.pipe';
 import {ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
+import {SettingsService} from 'src/app/shared/service/settings-service';
 import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfactory-item-image.component';
 
 @Component({
@@ -17,4 +18,8 @@ export class SatisfactoryItemComponent {
     @Input() productionInputs?: ProductionInputs;
     @Input({required: true}) target!: RecipeTarget;
     @Input() theme: 'name-inline' | 'name-tooltip' = 'name-inline';
+
+    hideItemNames = this.settingsService.hideItemNames;
+
+    constructor(private settingsService: SettingsService) {}
 }

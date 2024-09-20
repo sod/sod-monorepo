@@ -61,7 +61,7 @@
                 </app-input>
                 <button
                     class="btn w-100 rounded my-2 d-flex align-items-center cursor-pointer"
-                    [ngClass]="production.somersloop ? 'btn-outline-success' : 'btn-dark'"
+                    [ngClass]="production.somersloop ? 'btn-outline-success' : ('dark' | isTheme)() ? 'btn-dark' : 'btn-light'"
                     (click)="updateProduction(production, {somersloop: !production.somersloop})"
                 >
                     <i class="bi" [ngClass]="!production.somersloop ? 'bi-x-circle' : 'bi-check2-circle'"></i>
