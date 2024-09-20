@@ -4,6 +4,7 @@ let id = 1;
 
 @Directive({
     selector: '[appInputControl]',
+    standalone: true,
 })
 export class InputControlDirective {
     @HostBinding('class.form-control') formControlClass = true;

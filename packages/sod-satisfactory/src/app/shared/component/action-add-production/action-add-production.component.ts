@@ -6,6 +6,7 @@ import {addItemToProductionClicked} from '../../store/planner/planner.actions';
     selector: 'app-action-add-production',
     templateUrl: './action-add-production.component.html',
     styleUrls: ['./action-add-production.component.scss'],
+    standalone: true,
 })
 export class ActionAddProductionComponent {
     addProductionClicked = addItemToProductionClicked;

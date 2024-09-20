@@ -3,6 +3,7 @@ import {ItemPackage} from 'src/app/shared/entities/item-package';
 
 @Pipe({
     name: 'amountWithModifiers',
+    standalone: true,
 })
 export class AmountWithModifiersPipe implements PipeTransform {
     transform(value: ItemPackage | undefined, target: 'inputs' | 'outputs'): string {

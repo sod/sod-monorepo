@@ -42,6 +42,7 @@ export class ProductionInput {
 
 @Pipe({
     name: 'resolveProduction',
+    standalone: true,
 })
 export class ResolveProductionPipe implements PipeTransform {
     transform(productions: Production[], inputCovered: InputCoveredDto[]): ProductionInputs {

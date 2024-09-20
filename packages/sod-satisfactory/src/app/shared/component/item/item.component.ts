@@ -1,5 +1,7 @@
+import {AsyncPipe} from '@angular/common';
 import {Component, computed, ElementRef, Input, signal, ViewChild} from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
+import {FormsModule} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {recipesData} from 'src/app/generated/recipes-data';
 import {DropdownCommand, DropdownComponent} from 'src/app/shared/component/dropdown/dropdown.component';
@@ -11,6 +13,10 @@ import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {ItemSelectorService} from 'src/app/shared/service/item-selector-service';
 import {SearchService} from 'src/app/shared/service/search-service';
 import {addItemPackage, recipeSelected, removeItemPackage, updateItemPackage} from 'src/app/shared/store/planner/planner.actions';
+import {InputControlDirective} from '../../directive/input-control.directive';
+import {DropdownComponent as DropdownComponent_1} from '../dropdown/dropdown.component';
+import {InputComponent} from '../input/input.component';
+import {PackageImagesComponent} from '../package-images/package-images.component';
 
 const recipesDataSorted = recipesData
     .slice()
@@ -43,6 +49,8 @@ const recipesDataSorted = recipesData
     selector: 'app-item',
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.scss'],
+    standalone: true,
+    imports: [DropdownComponent_1, InputComponent, FormsModule, InputControlDirective, PackageImagesComponent, AsyncPipe],
 })
 export class ItemComponent {
     @Input() recipe!: Recipe;

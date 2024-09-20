@@ -49,6 +49,7 @@ import {AnimationService, AnimationWrapped, ElevatedMixed} from '../service/anim
 
 @Pipe({
     name: 'sodAnimate',
+    standalone: true,
 })
 export class AnimatePipe implements PipeTransform, OnDestroy {
     private nonObservableMode?: AnimationWrapped<any> = undefined;

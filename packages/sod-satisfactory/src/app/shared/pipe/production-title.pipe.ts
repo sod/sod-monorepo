@@ -3,6 +3,7 @@ import {Production} from 'src/app/shared/entities/production';
 
 @Pipe({
     name: 'productionTitle',
+    standalone: true,
 })
 export class ProductionTitlePipe implements PipeTransform {
     transform(production: Production): {title: string; subtitle: string} {

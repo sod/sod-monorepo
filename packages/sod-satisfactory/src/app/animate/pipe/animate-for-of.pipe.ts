@@ -49,6 +49,7 @@ import {AnimationService, ElevatedMixed} from '../service/animation.service';
 
 @Pipe({
     name: 'sodAnimateForOf',
+    standalone: true,
 })
 export class AnimateForOfPipe implements PipeTransform {
     constructor(private animationService: AnimationService) {}

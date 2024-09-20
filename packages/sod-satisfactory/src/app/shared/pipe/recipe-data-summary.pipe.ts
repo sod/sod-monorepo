@@ -2,6 +2,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
     name: 'recipeDataSummary',
+    standalone: true,
 })
 export class RecipeDataSummaryPipe implements PipeTransform {
     transform(recipeData: {inputs?: {itemName: string; amount: number}[]; outputs?: {itemName: string; amount: number}[]}): string {

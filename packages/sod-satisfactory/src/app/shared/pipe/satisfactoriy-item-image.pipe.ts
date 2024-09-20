@@ -5,6 +5,7 @@ import {ItemPackage} from 'src/app/shared/entities/item-package';
 
 @Pipe({
     name: 'satisfactoriyItemImage',
+    standalone: true,
 })
 export class SatisfactoriyItemImagePipe implements PipeTransform {
     transform(value: Pick<ItemPackage, 'itemName'>): string | undefined {

@@ -1,7 +1,7 @@
-import {DOCUMENT} from '@angular/common';
+import {DOCUMENT, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, effect, HostListener, Inject, OnInit} from '@angular/core';
-import {NavigationEnd, Router} from '@angular/router';
-import {RenderScheduler} from '@ngrx/component';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {PushPipe, RenderScheduler} from '@ngrx/component';
 import {filter} from 'rxjs';
 import {z} from 'zod';
 import {LocalStorageService} from './shared/service/local-storage-service';
@@ -14,6 +14,8 @@ const ThemeSchema = z.enum(['dark', 'light']);
     styleUrls: ['./app.component.scss'],
     providers: [RenderScheduler],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [RouterOutlet, NgTemplateOutlet, PushPipe],
 })
 export class AppComponent implements OnInit {
     @HostListener('window:keydown')

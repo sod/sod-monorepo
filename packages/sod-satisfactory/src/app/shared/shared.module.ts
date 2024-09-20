@@ -8,7 +8,7 @@ import {StoreModule} from '@ngrx/store';
 import {ActionAddProductionComponent} from 'src/app/shared/component/action-add-production/action-add-production.component';
 import {AmountWithModifiersPipe} from 'src/app/shared/pipe/amount-with-modifiers.pipe';
 import {SatisfactoriyItemImagePipe} from 'src/app/shared/pipe/satisfactoriy-item-image.pipe';
-import {SodAnimateModule} from '../animate/sod-animate.module';
+
 import {ActionProductionComponent} from './component/action-production/action-production.component';
 import {DropdownComponent} from './component/dropdown/dropdown.component';
 import {InputComponent} from './component/input/input.component';
@@ -40,7 +40,14 @@ import {PlannerEffects} from './store/planner/planner.effects';
 import * as fromPlanner from './store/planner/planner.reducer';
 
 @NgModule({
-    declarations: [
+    imports: [
+        PushPipe,
+        CommonModule,
+        EffectsModule.forFeature([AppEffects, PlannerEffects, PlannerEffects, AppEffects]),
+        StoreModule.forFeature(fromPlanner.plannerFeatureKey, fromPlanner.reducer),
+        StoreModule.forFeature(fromApp.appFeatureKey, fromApp.reducer),
+        FormsModule,
+        RouterLink,
         RecipeComponent,
         ActionAddProductionComponent,
         ProductionComponent,
@@ -70,22 +77,11 @@ import * as fromPlanner from './store/planner/planner.reducer';
         LoadProductionComponent,
         ModalOrInlinePipe,
     ],
-    imports: [
-        PushPipe,
-        CommonModule,
-        EffectsModule.forFeature([AppEffects, PlannerEffects, PlannerEffects, AppEffects]),
-        StoreModule.forFeature(fromPlanner.plannerFeatureKey, fromPlanner.reducer),
-        StoreModule.forFeature(fromApp.appFeatureKey, fromApp.reducer),
-        FormsModule,
-        SodAnimateModule,
-        RouterLink,
-    ],
     exports: [
         PushPipe,
         RecipeComponent,
         ActionAddProductionComponent,
         ProductionComponent,
-        SodAnimateModule,
         FormsModule,
         ItemComponent,
         ItemPackageComponent,

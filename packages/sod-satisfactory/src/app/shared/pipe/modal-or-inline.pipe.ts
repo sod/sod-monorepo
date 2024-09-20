@@ -4,6 +4,7 @@ import {map} from 'rxjs/operators';
 
 @Pipe({
     name: 'modalOrInline',
+    standalone: true,
 })
 export class ModalOrInlinePipe implements PipeTransform {
     transform(modalUpToWidth: number): unknown {

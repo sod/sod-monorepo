@@ -1,7 +1,10 @@
+import {NgTemplateOutlet} from '@angular/common';
 import {Component, Input, OnDestroy, OnInit, Output, TemplateRef} from '@angular/core';
+import {PushPipe} from '@ngrx/component';
 import {BehaviorSubject, Subject, delay, filter, fromEvent, merge, takeUntil} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {isDefined} from 'src/app/shared/function/is-defined';
+import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 
 let id = 0;
 const open$ = new BehaviorSubject(0);
@@ -11,6 +14,8 @@ export type DropdownCommand = 'start' | 'end' | 'prev' | 'next' | 'submit';
     selector: 'app-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
+    standalone: true,
+    imports: [NgTemplateOutlet, PushPipe, AnimatePipe],
 })
 export class DropdownComponent implements OnInit, OnDestroy {
     @Input({required: true}) element!: Element;

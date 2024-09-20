@@ -5,7 +5,6 @@ import {DefaultComponent} from './component/default/default.component';
 import {PlannerRoutingModule} from './planner-routing.module';
 
 @NgModule({
-    declarations: [DefaultComponent],
-    imports: [CommonModule, PlannerRoutingModule, SharedModule],
+    imports: [CommonModule, PlannerRoutingModule, SharedModule, DefaultComponent],
 })
 export class PlannerModule {}
