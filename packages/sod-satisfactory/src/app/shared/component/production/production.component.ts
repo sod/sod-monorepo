@@ -1,5 +1,5 @@
 import {NgClass} from '@angular/common';
-import {Component, Input} from '@angular/core';
+import {Component, computed, Input, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {Production} from 'src/app/shared/entities/production';
@@ -27,6 +27,9 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
 })
 export class ProductionComponent {
     @Input() production!: Production;
+    options = ['Inputs', 'Outputs', 'Modifiers'];
+    select = signal<string | undefined>(undefined);
+    selected = computed(() => this.select() ?? 'Outputs');
 
     constructor(private store: Store<GlobalState>) {}
 

@@ -1,13 +1,33 @@
 @if (production.recipe.outputs.length || production.recipe.inputs.length ? 'active' : 'new'; as current) {
     <div class="sod-shadow-lg rounded-3 bg-dark-subtle text-dark-emphasis">
-        <app-production-input-or-output [production]="production" [target]="'inputs'"></app-production-input-or-output>
-        <app-production-input-or-output
-            [production]="production"
-            [target]="'outputs'"
-            [autofocus]="current === 'new'"
-        ></app-production-input-or-output>
+        <ul class="nav nav-underline px-3 d-md-none">
+            @for (option of options; track $index) {
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        href="#"
+                        [class.active]="selected() === option"
+                        (click)="$event.preventDefault(); select.set(option)"
+                        >{{ option }}</a
+                    >
+                </li>
+            }
+        </ul>
+
+        <div class="d-md-block" [ngClass]="selected() === 'Inputs' ? 'd-block' : 'd-none'">
+            <app-production-input-or-output [production]="production" [target]="'inputs'"></app-production-input-or-output>
+        </div>
+
+        <div class="d-md-block" [ngClass]="selected() === 'Outputs' ? 'd-block' : 'd-none'">
+            <app-production-input-or-output
+                [production]="production"
+                [target]="'outputs'"
+                [autofocus]="current === 'new'"
+            ></app-production-input-or-output>
+        </div>
+
         @if (current === 'active') {
-            <div class="p-3">
+            <div class="d-md-block p-3" [ngClass]="selected() === 'Modifiers' ? 'd-block' : 'd-none'">
                 <h6>Modifier</h6>
                 <app-input label="Machines" class="mb-2">
                     <input

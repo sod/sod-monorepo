@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "web-test-runner"
+        "serve": "POSTCSS_ENV=dev ng serve"
     },
     "keywords": [],
     "author": "",
