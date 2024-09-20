@@ -3257,12 +3257,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@self/postcss@workspace:packages/postcss":
-  version: 0.0.0-use.local
-  resolution: "@self/postcss@workspace:packages/postcss"
-  languageName: unknown
-  linkType: soft
-
 "@sigstore/bundle@npm:^2.2.0":
   version: 2.2.0
   resolution: "@sigstore/bundle@npm:2.2.0"
@@ -3325,6 +3319,80 @@ __metadata:
   checksum: 10/297f95ff77c82c54de8c9907f186076e715ff2621c5222ba50b8d40a170661c0c5242c763cba2a4791f0f91cb1d8ffa53ea1d7294570cf8cd4694c0e383e484d
   languageName: node
   linkType: hard
+
+"@sod/barcode-scanner@workspace:packages/barcode-scanner":
+  version: 0.0.0-use.local
+  resolution: "@sod/barcode-scanner@workspace:packages/barcode-scanner"
+  dependencies:
+    "@open-wc/testing": "npm:^4.0.0"
+    "@web/dev-server-esbuild": "npm:^1.0.2"
+    "@web/test-runner": "npm:^0.18.2"
+    "@web/test-runner-playwright": "npm:^0.11.0"
+    esbuild-register: "npm:^3.5.0"
+    prettier: "npm:^3.3.2"
+    typescript: "npm:^5.5.2"
+  languageName: unknown
+  linkType: soft
+
+"@sod/postcss@workspace:packages/postcss":
+  version: 0.0.0-use.local
+  resolution: "@sod/postcss@workspace:packages/postcss"
+  languageName: unknown
+  linkType: soft
+
+"@sod/satisfactory@workspace:packages/sod-satisfactory":
+  version: 0.0.0-use.local
+  resolution: "@sod/satisfactory@workspace:packages/sod-satisfactory"
+  dependencies:
+    "@angular-devkit/build-angular": "npm:^17.3.0"
+    "@angular-eslint/builder": "npm:17.3.0"
+    "@angular-eslint/eslint-plugin": "npm:17.3.0"
+    "@angular-eslint/eslint-plugin-template": "npm:17.3.0"
+    "@angular-eslint/schematics": "npm:17.3.0"
+    "@angular-eslint/template-parser": "npm:17.3.0"
+    "@angular/animations": "npm:^17.3.0"
+    "@angular/cli": "npm:^17.3.0"
+    "@angular/common": "npm:^17.3.0"
+    "@angular/compiler": "npm:^17.3.0"
+    "@angular/compiler-cli": "npm:^17.3.0"
+    "@angular/core": "npm:^17.3.0"
+    "@angular/forms": "npm:^17.3.0"
+    "@angular/platform-browser": "npm:^17.3.0"
+    "@angular/platform-browser-dynamic": "npm:^17.3.0"
+    "@angular/router": "npm:^17.3.0"
+    "@fullhuman/postcss-purgecss": "npm:^5.0.0"
+    "@ngrx/component": "npm:^17.1.1"
+    "@ngrx/effects": "npm:^17.1.1"
+    "@ngrx/entity": "npm:^17.1.1"
+    "@ngrx/router-store": "npm:^17.1.1"
+    "@ngrx/schematics": "npm:^17.1.1"
+    "@ngrx/store": "npm:^17.1.1"
+    "@ngrx/store-devtools": "npm:^17.1.1"
+    "@types/lodash-es": "npm:^4.17.12"
+    "@types/node": "npm:^20.11.28"
+    "@types/uuid": "npm:^9.0.8"
+    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
+    "@typescript-eslint/parser": "npm:^7.2.0"
+    bootstrap: "npm:^5"
+    bootstrap-icons: "npm:^1.11.3"
+    bootswatch: "npm:^5.3.3"
+    esbuild: "npm:^0.23.1"
+    esbuild-register: "npm:^3.6.0"
+    eslint: "npm:^8.57.0"
+    glob: "npm:^10.3.10"
+    lodash-es: "npm:^4.17.21"
+    prettier: "npm:^3.2.5"
+    prettier-plugin-organize-imports: "npm:^3.2.4"
+    rxjs: "npm:^7.8.1"
+    satisfactory-docs-parser: "npm:^7.0.1"
+    ts-node: "npm:^10.9.2"
+    tslib: "npm:^2.6.2"
+    typescript: "npm:5.4"
+    uuid: "npm:^9.0.1"
+    zod: "npm:^3.22.4"
+    zone.js: "npm:~0.14.4"
+  languageName: unknown
+  linkType: soft
 
 "@tootallnate/once@npm:1":
   version: 1.1.2
@@ -4886,20 +4954,6 @@ __metadata:
   checksum: 10/9706c088a283058a8a99e0bf91b0a2f75497f185980d9ffa8b304de1d9e58ebda7c72c07ebf01dadedaac5b2907b2c6f566f660d62bd336c3468e960403b9d65
   languageName: node
   linkType: hard
-
-"barcode-scanner@workspace:packages/barcode-scanner":
-  version: 0.0.0-use.local
-  resolution: "barcode-scanner@workspace:packages/barcode-scanner"
-  dependencies:
-    "@open-wc/testing": "npm:^4.0.0"
-    "@web/dev-server-esbuild": "npm:^1.0.2"
-    "@web/test-runner": "npm:^0.18.2"
-    "@web/test-runner-playwright": "npm:^0.11.0"
-    esbuild-register: "npm:^3.5.0"
-    prettier: "npm:^3.3.2"
-    typescript: "npm:^5.5.2"
-  languageName: unknown
-  linkType: soft
 
 "bare-events@npm:^2.0.0, bare-events@npm:^2.2.0":
   version: 2.4.2
@@ -11230,54 +11284,6 @@ __metadata:
 "sod-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "sod-monorepo@workspace:."
-  dependencies:
-    "@angular-devkit/build-angular": "npm:^17.3.0"
-    "@angular-eslint/builder": "npm:17.3.0"
-    "@angular-eslint/eslint-plugin": "npm:17.3.0"
-    "@angular-eslint/eslint-plugin-template": "npm:17.3.0"
-    "@angular-eslint/schematics": "npm:17.3.0"
-    "@angular-eslint/template-parser": "npm:17.3.0"
-    "@angular/animations": "npm:^17.3.0"
-    "@angular/cli": "npm:^17.3.0"
-    "@angular/common": "npm:^17.3.0"
-    "@angular/compiler": "npm:^17.3.0"
-    "@angular/compiler-cli": "npm:^17.3.0"
-    "@angular/core": "npm:^17.3.0"
-    "@angular/forms": "npm:^17.3.0"
-    "@angular/platform-browser": "npm:^17.3.0"
-    "@angular/platform-browser-dynamic": "npm:^17.3.0"
-    "@angular/router": "npm:^17.3.0"
-    "@fullhuman/postcss-purgecss": "npm:^5.0.0"
-    "@ngrx/component": "npm:^17.1.1"
-    "@ngrx/effects": "npm:^17.1.1"
-    "@ngrx/entity": "npm:^17.1.1"
-    "@ngrx/router-store": "npm:^17.1.1"
-    "@ngrx/schematics": "npm:^17.1.1"
-    "@ngrx/store": "npm:^17.1.1"
-    "@ngrx/store-devtools": "npm:^17.1.1"
-    "@types/lodash-es": "npm:^4.17.12"
-    "@types/node": "npm:^20.11.28"
-    "@types/uuid": "npm:^9.0.8"
-    "@typescript-eslint/eslint-plugin": "npm:^7.2.0"
-    "@typescript-eslint/parser": "npm:^7.2.0"
-    bootstrap: "npm:^5"
-    bootstrap-icons: "npm:^1.11.3"
-    bootswatch: "npm:^5.3.3"
-    esbuild: "npm:^0.23.1"
-    esbuild-register: "npm:^3.6.0"
-    eslint: "npm:^8.57.0"
-    glob: "npm:^10.3.10"
-    lodash-es: "npm:^4.17.21"
-    prettier: "npm:^3.2.5"
-    prettier-plugin-organize-imports: "npm:^3.2.4"
-    rxjs: "npm:^7.8.1"
-    satisfactory-docs-parser: "npm:^7.0.1"
-    ts-node: "npm:^10.9.2"
-    tslib: "npm:^2.6.2"
-    typescript: "npm:5.4"
-    uuid: "npm:^9.0.1"
-    zod: "npm:^3.22.4"
-    zone.js: "npm:~0.14.4"
   languageName: unknown
   linkType: soft
 

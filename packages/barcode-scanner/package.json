@@ -1,5 +1,5 @@
 {
-  "name": "barcode-scanner",
+  "name": "@sod/barcode-scanner",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
