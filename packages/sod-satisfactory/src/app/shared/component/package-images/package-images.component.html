@@ -1,6 +1,6 @@
-<ng-container *ngFor="let itemPackage of items">
+@for (itemPackage of items; track itemPackage) {
     <span class="d-inline-block text-center image mx-2">
         <app-satisfactory-item-image [itemPackage]="itemPackage"></app-satisfactory-item-image>
         <span class="badge rounded-pill text-bg-secondary">{{ itemPackage.amount }}</span>
     </span>
-</ng-container>
+}

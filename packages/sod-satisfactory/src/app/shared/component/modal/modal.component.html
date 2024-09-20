@@ -1,4 +1,4 @@
-<ng-container *ngIf="active$ | sodAnimate | ngrxPush as active">
+@if (active$ | sodAnimate | ngrxPush; as active) {
     <div class="modal fade d-block non-interactive" [class.show]="active.enter && !active.leave" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content interactive">
@@ -7,4 +7,4 @@
         </div>
     </div>
     <div class="modal-backdrop fade interactive" [class.show]="active.enter && !active.leave" (click)="close()"></div>
-</ng-container>
+}

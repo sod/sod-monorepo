@@ -2,4 +2,4 @@ class BarcodeDetectService {
     read() {}
 }
 
-export const barcodeDetectService = new BarcodeDetectService()
+export const barcodeDetectService = new BarcodeDetectService();

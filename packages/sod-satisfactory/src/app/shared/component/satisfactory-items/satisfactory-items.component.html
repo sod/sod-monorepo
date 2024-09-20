@@ -1,19 +1,22 @@
 <div class="row gx-2" [class.justify-content-end]="target === 'outputs'">
-    <div class="col-6 d-flex mb-2" *ngFor="let itemPackage of values; trackBy: name">
-        <div
-            *ngIf="{input: productionInputs?.get(itemPackage.itemName)} | sodAnimate: {strategy: 'truthy'} | ngrxPush as state"
-            class="item rounded border shadow-sm d-flex p-2 bg-body text-body w-100 sod-animate--fade"
-            [class.show]="state.enter && !state.leave"
-            [ngClass]="state.value.input?.isMissing() === 'yes' ? 'border-warning' : 'border-dark-subtle'"
-            [class.clickable]="!!productionInputs"
-            (click)="productionInputs && inputClicked(itemPackage, state.value.input)"
-        >
-            <app-satisfactory-item
-                class="d-block w-100"
-                [itemPackage]="itemPackage"
-                [productionInputs]="productionInputs"
-                [target]="target"
-            />
+    @for (itemPackage of values; track name($index, itemPackage)) {
+        <div class="col-6 d-flex mb-2">
+            @if ({input: productionInputs?.get(itemPackage.itemName)} | sodAnimate: {strategy: 'truthy'} | ngrxPush; as state) {
+                <div
+                    class="item rounded border shadow-sm d-flex p-2 bg-body text-body w-100 sod-animate--fade"
+                    [class.show]="state.enter && !state.leave"
+                    [ngClass]="state.value.input?.isMissing() === 'yes' ? 'border-warning' : 'border-dark-subtle'"
+                    [class.clickable]="!!productionInputs"
+                    (click)="productionInputs && inputClicked(itemPackage, state.value.input)"
+                >
+                    <app-satisfactory-item
+                        class="d-block w-100"
+                        [itemPackage]="itemPackage"
+                        [productionInputs]="productionInputs"
+                        [target]="target"
+                    />
+                </div>
+            }
         </div>
-    </div>
+    }
 </div>

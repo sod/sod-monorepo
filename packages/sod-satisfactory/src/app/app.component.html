@@ -21,7 +21,8 @@
 </div>
 
 <ng-template #themeTemplate let-value let-checked="checked">
-    <a role="button" (click)="$event.preventDefault(); theme.set(value)" href="#"
-       [class.link-secondary]="!checked">{{ value }}</a>
-    <i class="bi bi bi-check2-circle text-success" *ngIf="checked"></i>
+    <a role="button" (click)="$event.preventDefault(); theme.set(value)" href="#" [class.link-secondary]="!checked">{{ value }}</a>
+    @if (checked) {
+        <i class="bi bi bi-check2-circle text-success"></i>
+    }
 </ng-template>

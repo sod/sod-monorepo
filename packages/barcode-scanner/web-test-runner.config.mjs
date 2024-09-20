@@ -1,5 +1,4 @@
 import {esbuildPlugin} from '@web/dev-server-esbuild';
-import {playwrightLauncher} from '@web/test-runner-playwright';
 
 export default {
     files: 'src/**/*-spec.ts',

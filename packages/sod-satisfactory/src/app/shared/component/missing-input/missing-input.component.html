@@ -1,17 +1,19 @@
-<button
-    class="btn w-100 rounded mb-2 d-flex align-items-center cursor-pointer btn-sm"
-    [ngClass]="missing === 'yes' ? 'btn-outline-warning' : 'btn-outline-success'"
-    (click)="toggle()"
-    *ngIf="input.isMissing() as missing"
->
-    <i class="bi" [ngClass]="missing === 'yes' ? 'bi-x-circle' : 'bi-check2-circle'"></i>
-
-    <app-satisfactory-item-image [heightPercent]="100" [itemPackage]="input.inputs[0]" class="image mx-2"></app-satisfactory-item-image>
-    <div class="flex-grow-1 text-start">{{ input.itemName }}</div>
-    <div>
-        <ng-container *ngIf="input.getMissingAmount() !== input.amount">
-            <span *ngIf="input.getMissingAmount() as amount">(+{{ amount | absolute | toFixed: 1 }})</span>
-        </ng-container>
-        {{ input.amount | absolute | toFixed: 1 }}
-    </div>
-</button>
+@if (input.isMissing(); as missing) {
+    <button
+        class="btn w-100 rounded mb-2 d-flex align-items-center cursor-pointer btn-sm"
+        [ngClass]="missing === 'yes' ? 'btn-outline-warning' : 'btn-outline-success'"
+        (click)="toggle()"
+    >
+        <i class="bi" [ngClass]="missing === 'yes' ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+        <app-satisfactory-item-image [heightPercent]="100" [itemPackage]="input.inputs[0]" class="image mx-2"></app-satisfactory-item-image>
+        <div class="flex-grow-1 text-start">{{ input.itemName }}</div>
+        <div>
+            @if (input.getMissingAmount() !== input.amount) {
+                @if (input.getMissingAmount(); as amount) {
+                    <span>(+{{ amount | absolute | toFixed: 1 }})</span>
+                }
+            }
+            {{ input.amount | absolute | toFixed: 1 }}
+        </div>
+    </button>
+}

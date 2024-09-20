@@ -1,5 +1,5 @@
 {
-  "name": "@sod/postcss",
-  "main": "index.js",
-  "private": true
+    "name": "@sod/postcss",
+    "main": "index.js",
+    "private": true
 }

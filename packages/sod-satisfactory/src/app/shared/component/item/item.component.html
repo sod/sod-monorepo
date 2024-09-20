@@ -27,7 +27,9 @@
         }
         <li><h6 class="dropdown-header">Recipes</h6></li>
         @if (suggestions.recipes; as recipes) {
-            <li *ngIf="!recipes.length"><span class="dropdown-item disabled">none</span></li>
+            @if (!recipes.length) {
+                <li><span class="dropdown-item disabled">none</span></li>
+            }
             @for (option of recipes; track option) {
                 <li (click)="itemSelected(option, itemPackage); dropdownController.close()">
                     <span class="dropdown-item" [class.active]="option === selected()">

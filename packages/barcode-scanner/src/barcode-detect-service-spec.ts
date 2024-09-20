@@ -1,6 +1,3 @@
-import {readFile} from 'node:fs/promises';
-import {extname, join} from 'node:path';
-import {barcodeFilesDir} from '../tests/barcode/barcode-files';
 import {expect, fixture, html} from '@open-wc/testing';
 
 describe('MyElement', () => {

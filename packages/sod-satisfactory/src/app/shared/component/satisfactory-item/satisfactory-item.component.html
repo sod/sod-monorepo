@@ -3,23 +3,27 @@
     [itemPackage]="itemPackage"
     [attr.title]="itemPackage.itemName"
 ></app-satisfactory-item-image>
-<div class="text-center mt-2" *ngIf="{input: productionInputs?.get(itemPackage.itemName)} as state">
-    <ng-container [ngSwitch]="state.input?.isMissing()">
-        <ng-container *ngSwitchCase="'yes'">
-            <span class="text-warning">
-                <i class="bi bi-x-circle"></i>
+@if ({input: productionInputs?.get(itemPackage.itemName)}; as state) {
+    <div class="text-center mt-2">
+        @switch (state.input?.isMissing()) {
+            @case ('yes') {
+                <span class="text-warning">
+                    <i class="bi bi-x-circle"></i>
+                    {{ itemPackage | amountWithModifiers: target }}
+                </span>
+            }
+            @case ('covered') {
+                <span class="text-success">
+                    <i class="bi bi-check2-circle"></i>
+                    {{ itemPackage | amountWithModifiers: target }}
+                </span>
+            }
+            @default {
                 {{ itemPackage | amountWithModifiers: target }}
-            </span>
-        </ng-container>
-        <ng-container *ngSwitchCase="'covered'">
-            <span class="text-success">
-                <i class="bi bi-check2-circle"></i>
-                {{ itemPackage | amountWithModifiers: target }}
-            </span>
-        </ng-container>
-        <ng-container *ngSwitchDefault>
-            {{ itemPackage | amountWithModifiers: target }}
-        </ng-container>
-    </ng-container>
-</div>
-<div class="text-center text-muted" *ngIf="theme === 'name-inline'">{{ itemPackage.itemName }}</div>
+            }
+        }
+    </div>
+}
+@if (theme === 'name-inline') {
+    <div class="text-center text-muted">{{ itemPackage.itemName }}</div>
+}

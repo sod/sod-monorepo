@@ -2,27 +2,32 @@
 
 <ng-template #content>
     <div class="p-3">
-        <ng-container *ngIf="productionsService.productions$ | ngrxPush as productions; else empty">
-            <div
-                *ngFor="let production of productions"
-                class="production rounded bg-dark-subtle text-dark-emphasis mb-2 p-1"
-                [class.production--active]="production.uuid === (activeUuid$ | ngrxPush)"
-                [routerLink]="'/id/' + production.uuid"
-                (click)="open$.next(false)"
-            >
+        @if (productionsService.productions$ | ngrxPush; as productions) {
+            @for (production of productions; track production) {
                 <div
-                    class="production__item rounded border shadow-sm d-inline-block p-1 me-1 bg-body text-body"
-                    *ngFor="let output of production.outputs"
+                    class="production rounded bg-dark-subtle text-dark-emphasis mb-2 p-1"
+                    [class.production--active]="production.uuid === (activeUuid$ | ngrxPush)"
+                    [routerLink]="'/id/' + production.uuid"
+                    (click)="open$.next(false)"
                 >
-                    <app-satisfactory-item class="d-block w-100" [itemPackage]="output" [target]="'outputs'" [theme]="'name-tooltip'" />
+                    @for (output of production.outputs; track output) {
+                        <div class="production__item rounded border shadow-sm d-inline-block p-1 me-1 bg-body text-body">
+                            <app-satisfactory-item
+                                class="d-block w-100"
+                                [itemPackage]="output"
+                                [target]="'outputs'"
+                                [theme]="'name-tooltip'"
+                            />
+                        </div>
+                    }
                 </div>
-            </div>
-        </ng-container>
+            }
+        } @else {
+            No productions found
+        }
 
         <div class="mt-4">
             <button class="btn btn-outline-primary" (click)="open$.next(false)">Close</button>
         </div>
     </div>
 </ng-template>
-
-<ng-template #empty> No productions found</ng-template>

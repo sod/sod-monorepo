@@ -2,52 +2,53 @@
 
 <div class="text-muted">All input & output values are normalized to "N units/m³ per 60 seconds"</div>
 
-<div class="row my-4" *ngIf="productions$ | ngrxPush as productions">
-    <div class="col-md-6" *ngIf="productions | resolveProduction: (inputCovered$ | ngrxPush) ?? [] as productionInputs">
-        <ng-container *ngIf="productions.length">
-            <h4>Machines</h4>
-            <ng-container *ngFor="let production of productions; trackBy: trackByService.index; let index = index">
-                <app-production-overview
-                    *ngIf="production.hasRecipes()"
-                    [production]="production"
-                    [productionInputs]="productionInputs"
-                    [positionInList]="index"
-                    class="mb-3 d-block"
-                ></app-production-overview>
-            </ng-container>
-
-            <ng-container *ngIf="isMissing(productionInputs) as missingInputs">
-                <h4 class="mt-5">Inputs</h4>
-                <app-missing-input [input]="input" *ngFor="let input of missingInputs"></app-missing-input>
-            </ng-container>
-        </ng-container>
-
-        <div class="mt-5">
-            <app-action-add-production class="mb-4 d-block"></app-action-add-production>
-            <app-action-production
-                *ngIf="productions.length || (productionsService.productions$ | ngrxPush)?.length"
-            ></app-action-production>
+@if (productions$ | ngrxPush; as productions) {
+    <div class="row my-4">
+        @if (productions | resolveProduction: (inputCovered$ | ngrxPush) ?? []; as productionInputs) {
+            <div class="col-md-6">
+                @if (productions.length) {
+                    <h4>Machines</h4>
+                    @for (production of productions; track trackByService.index(index, production); let index = $index) {
+                        @if (production.hasRecipes()) {
+                            <app-production-overview
+                                [production]="production"
+                                [productionInputs]="productionInputs"
+                                [positionInList]="index"
+                                class="mb-3 d-block"
+                            ></app-production-overview>
+                        }
+                    }
+                    @if (isMissing(productionInputs); as missingInputs) {
+                        <h4 class="mt-5">Inputs</h4>
+                        @for (input of missingInputs; track input) {
+                            <app-missing-input [input]="input"></app-missing-input>
+                        }
+                    }
+                }
+                <div class="mt-5">
+                    <app-action-add-production class="mb-4 d-block"></app-action-add-production>
+                    @if (productions.length || (productionsService.productions$ | ngrxPush)?.length) {
+                        <app-action-production></app-action-production>
+                    }
+                </div>
+            </div>
+        }
+        <div class="col-md-6">
+            @switch (breakpoint.md | modalOrInline | ngrxPush) {
+                @case ('modal') {
+                    <app-modal [active$]="edit$" [content]="content"></app-modal>
+                }
+                @case ('inline') {
+                    @if (edit$ | sodAnimate: {strategy: 'truthy'} | ngrxPush; as state) {
+                        <div class="sod-animate--fade" [class.show]="state.enter && !state.leave">
+                            <ng-container *ngTemplateOutlet="content; context: {$implicit: state.value}"></ng-container>
+                        </div>
+                    }
+                }
+            }
+            <ng-template #content let-value>
+                <app-production class="production d-block" [production]="value"></app-production>
+            </ng-template>
         </div>
     </div>
-
-    <div class="col-md-6">
-        <ng-container [ngSwitch]="breakpoint.md | modalOrInline | ngrxPush">
-            <ng-container *ngSwitchCase="'modal'">
-                <app-modal [active$]="edit$" [content]="content"></app-modal>
-            </ng-container>
-            <ng-container *ngSwitchCase="'inline'">
-                <div
-                    *ngIf="edit$ | sodAnimate: {strategy: 'truthy'} | ngrxPush as state"
-                    class="sod-animate--fade"
-                    [class.show]="state.enter && !state.leave"
-                >
-                    <ng-container *ngTemplateOutlet="content; context: {$implicit: state.value}"></ng-container>
-                </div>
-            </ng-container>
-        </ng-container>
-
-        <ng-template #content let-value>
-            <app-production class="production d-block" [production]="value"></app-production>
-        </ng-template>
-    </div>
-</div>
+}

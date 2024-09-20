@@ -25,9 +25,9 @@ export function mergeTakeOne<SOURCE, MERGE extends (ObservableInput<unknown> | (
             [P in keyof MERGE]: MERGE[P] extends ObservableInput<infer FROM_OBSERVABLE>
                 ? FROM_OBSERVABLE
                 : MERGE[P] extends (source: SOURCE) => ObservableInput<infer FROM_FUNCTION>
-                ? FROM_FUNCTION
-                : never;
-        }
+                  ? FROM_FUNCTION
+                  : never;
+        },
     ]
 > {
     return mergeMap((source) =>

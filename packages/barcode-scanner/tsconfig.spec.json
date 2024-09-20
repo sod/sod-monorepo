@@ -1,11 +1,7 @@
 {
-  "compilerOptions": {
-    "types": [
-      "@web/test-runner"
-    ]
-  },
-  "extends": "tsconfig.json",
-  "files": [
-    "**/*-spec.ts"
-  ]
+    "compilerOptions": {
+        "types": ["@web/test-runner"]
+    },
+    "extends": "tsconfig.json",
+    "files": ["**/*-spec.ts"]
 }

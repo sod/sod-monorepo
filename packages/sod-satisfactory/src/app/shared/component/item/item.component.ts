@@ -76,7 +76,7 @@ export class ItemComponent {
     ) {}
 
     itemSelected(itemName: string | RecipeDataDto, itemPackage?: ItemPackage): void {
-        this.needle.set(typeof itemName === 'string' ? itemName : itemPackage?.itemName ?? '');
+        this.needle.set(typeof itemName === 'string' ? itemName : (itemPackage?.itemName ?? ''));
         this.selected.set(undefined);
 
         if (typeof itemName !== 'string') {

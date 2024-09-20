@@ -1,75 +1,70 @@
-<div
-    class="sod-shadow-lg rounded-3 bg-dark-subtle text-dark-emphasis"
-    *ngIf="production.recipe.outputs.length || production.recipe.inputs.length ? 'active' : 'new' as current"
->
-    <app-production-input-or-output [production]="production" [target]="'inputs'"></app-production-input-or-output>
-
-    <app-production-input-or-output
-        [production]="production"
-        [target]="'outputs'"
-        [autofocus]="current === 'new'"
-    ></app-production-input-or-output>
-
-    <div *ngIf="current === 'active'" class="p-3">
-        <h6>Modifier</h6>
-
-        <app-input label="Machines" class="mb-2">
-            <input
-                appInputControl
-                type="number"
-                min="1"
-                [ngModel]="production.machines"
-                (ngModelChange)="updateProduction(production, {machines: $event || undefined})"
-            />
-        </app-input>
-        <app-input label="% from Slugs" class="mb-2">
-            <input
-                appInputControl
-                type="number"
-                min="50"
-                max="250"
-                step="50"
-                [ngModel]="production.clockSpeed1"
-                (ngModelChange)="updateProduction(production, {clockSpeed1: $event || undefined})"
-            />
-        </app-input>
-        <app-input label="% from MK Upgrade">
-            <input
-                appInputControl
-                type="number"
-                min="50"
-                step="50"
-                [ngModel]="production.clockSpeed2"
-                (ngModelChange)="updateProduction(production, {clockSpeed2: $event || undefined})"
-            />
-        </app-input>
-
-        <button
-            class="btn w-100 rounded my-2 d-flex align-items-center cursor-pointer"
-            [ngClass]="production.somersloop ? 'btn-outline-success' : 'btn-dark'"
-            (click)="updateProduction(production, {somersloop: !production.somersloop})"
-        >
-            <i class="bi" [ngClass]="!production.somersloop ? 'bi-x-circle' : 'bi-check2-circle'"></i>
-
-            <app-satisfactory-item-image
-                [heightPercent]="100"
-                [itemPackage]="{itemName: 'Somersloop'}"
-                class="mx-2"
-                style="width: 1.5rem"
-            ></app-satisfactory-item-image>
-            <div class="flex-grow-1 text-start">Use Somersloop</div>
-        </button>
-    </div>
-
-    <div class="d-flex p-3">
-        <div class="flex-grow-1">
-            <button class="btn btn-outline-primary d-md-none" (click)="closeProduction()">Close</button>
-        </div>
-        <div>
-            <button class="btn btn-outline-danger" (click)="removeProduction(production)">
-                <i class="bi bi-trash-fill"></i>
-                Remove
-            </button>
+@if (production.recipe.outputs.length || production.recipe.inputs.length ? 'active' : 'new'; as current) {
+    <div class="sod-shadow-lg rounded-3 bg-dark-subtle text-dark-emphasis">
+        <app-production-input-or-output [production]="production" [target]="'inputs'"></app-production-input-or-output>
+        <app-production-input-or-output
+            [production]="production"
+            [target]="'outputs'"
+            [autofocus]="current === 'new'"
+        ></app-production-input-or-output>
+        @if (current === 'active') {
+            <div class="p-3">
+                <h6>Modifier</h6>
+                <app-input label="Machines" class="mb-2">
+                    <input
+                        appInputControl
+                        type="number"
+                        min="1"
+                        [ngModel]="production.machines"
+                        (ngModelChange)="updateProduction(production, {machines: $event || undefined})"
+                    />
+                </app-input>
+                <app-input label="% from Slugs" class="mb-2">
+                    <input
+                        appInputControl
+                        type="number"
+                        min="50"
+                        max="250"
+                        step="50"
+                        [ngModel]="production.clockSpeed1"
+                        (ngModelChange)="updateProduction(production, {clockSpeed1: $event || undefined})"
+                    />
+                </app-input>
+                <app-input label="% from MK Upgrade">
+                    <input
+                        appInputControl
+                        type="number"
+                        min="50"
+                        step="50"
+                        [ngModel]="production.clockSpeed2"
+                        (ngModelChange)="updateProduction(production, {clockSpeed2: $event || undefined})"
+                    />
+                </app-input>
+                <button
+                    class="btn w-100 rounded my-2 d-flex align-items-center cursor-pointer"
+                    [ngClass]="production.somersloop ? 'btn-outline-success' : 'btn-dark'"
+                    (click)="updateProduction(production, {somersloop: !production.somersloop})"
+                >
+                    <i class="bi" [ngClass]="!production.somersloop ? 'bi-x-circle' : 'bi-check2-circle'"></i>
+                    <app-satisfactory-item-image
+                        [heightPercent]="100"
+                        [itemPackage]="{itemName: 'Somersloop'}"
+                        class="mx-2"
+                        style="width: 1.5rem"
+                    ></app-satisfactory-item-image>
+                    <div class="flex-grow-1 text-start">Use Somersloop</div>
+                </button>
+            </div>
+        }
+        <div class="d-flex p-3">
+            <div class="flex-grow-1">
+                <button class="btn btn-outline-primary d-md-none" (click)="closeProduction()">Close</button>
+            </div>
+            <div>
+                <button class="btn btn-outline-danger" (click)="removeProduction(production)">
+                    <i class="bi bi-trash-fill"></i>
+                    Remove
+                </button>
+            </div>
         </div>
     </div>
-</div>
+}

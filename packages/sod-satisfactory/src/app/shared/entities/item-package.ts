@@ -8,7 +8,10 @@ export class ItemPackage {
     readonly itemName: string = this.dto.itemName;
     readonly amount: number = this.dto.amount;
 
-    constructor(private readonly dto: ItemPackageDto, public readonly parent: Recipe) {}
+    constructor(
+        private readonly dto: ItemPackageDto,
+        public readonly parent: Recipe,
+    ) {}
 
     unwrap(): ItemParentRelationForItemPackage {
         return Object.assign(this.parent.unwrap(), {itemPackage: this.dto});
