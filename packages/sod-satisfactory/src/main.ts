@@ -7,7 +7,6 @@ import {provideRouter, withEnabledBlockingInitialNavigation, withHashLocation} f
 import {EffectsModule} from '@ngrx/effects';
 import {NavigationActionTiming, StoreRouterConnectingModule, routerReducer} from '@ngrx/router-store';
 import {StoreModule} from '@ngrx/store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {DefaultComponent} from 'src/app/planner/component/default/default.component';
 import {AppEffects} from 'src/app/shared/store/app/app.effects';
 import * as fromApp from 'src/app/shared/store/app/app.reducer';
@@ -53,7 +52,7 @@ bootstrapApplication(AppComponent, {
             EffectsModule.forFeature([AppEffects, PlannerEffects, PlannerEffects, AppEffects]),
             StoreModule.forFeature(fromPlanner.plannerFeatureKey, fromPlanner.reducer),
             StoreModule.forFeature(fromApp.appFeatureKey, fromApp.reducer),
-            !environment.production ? StoreDevtoolsModule.instrument({connectInZone: true}) : [],
+            environment.devtools,
         ),
         provideExperimentalZonelessChangeDetection(),
         provideHttpClient(withInterceptorsFromDi()),

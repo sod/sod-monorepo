@@ -1,7 +1,3 @@
 {
-  "plugins": [
-    [
-      "@sod/postcss"
-    ]
-  ]
+    "plugins": [["@sod/postcss"]]
 }
