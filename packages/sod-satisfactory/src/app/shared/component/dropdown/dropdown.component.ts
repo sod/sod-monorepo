@@ -1,4 +1,4 @@
-import {NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, OnDestroy, OnInit, Output, TemplateRef} from '@angular/core';
 import {PushPipe} from '@ngrx/component';
 import {BehaviorSubject, Subject, delay, filter, fromEvent, merge, takeUntil} from 'rxjs';
@@ -15,7 +15,7 @@ export type DropdownCommand = 'start' | 'end' | 'prev' | 'next' | 'submit';
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
     standalone: true,
-    imports: [NgTemplateOutlet, PushPipe, AnimatePipe],
+    imports: [NgTemplateOutlet, PushPipe, AnimatePipe, AsyncPipe],
 })
 export class DropdownComponent implements OnInit, OnDestroy {
     @Input({required: true}) element!: Element;

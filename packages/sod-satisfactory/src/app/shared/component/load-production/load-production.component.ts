@@ -1,3 +1,4 @@
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {PushPipe} from '@ngrx/component';
@@ -13,7 +14,7 @@ import {SatisfactoryItemComponent} from '../satisfactory-item/satisfactory-item.
     templateUrl: './load-production.component.html',
     styleUrls: ['./load-production.component.scss'],
     standalone: true,
-    imports: [ModalComponent, RouterLink, SatisfactoryItemComponent, PushPipe],
+    imports: [ModalComponent, RouterLink, SatisfactoryItemComponent, PushPipe, AsyncPipe],
 })
 export class LoadProductionComponent {
     protected open$ = new BehaviorSubject<boolean>(false);

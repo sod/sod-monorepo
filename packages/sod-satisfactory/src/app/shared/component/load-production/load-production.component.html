@@ -2,11 +2,11 @@
 
 <ng-template #content>
     <div class="p-3">
-        @if (productionsService.productions$ | ngrxPush; as productions) {
+        @if (productionsService.productions$ | async; as productions) {
             @for (production of productions; track production) {
                 <div
                     class="production rounded bg-dark-subtle text-dark-emphasis mb-2 p-1"
-                    [class.production--active]="production.uuid === (activeUuid$ | ngrxPush)"
+                    [class.production--active]="production.uuid === (activeUuid$ | async)"
                     [routerLink]="'/id/' + production.uuid"
                     (click)="open$.next(false)"
                 >

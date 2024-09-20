@@ -1,4 +1,4 @@
-@if (active$ | sodAnimate | ngrxPush; as active) {
+@if (active$ | sodAnimate | async; as active) {
     <div class="modal fade d-block non-interactive" [class.show]="active.enter && !active.leave" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content interactive">

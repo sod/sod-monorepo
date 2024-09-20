@@ -2,9 +2,9 @@
 
 <div class="text-muted">All input & output values are normalized to "N units/m³ per 60 seconds"</div>
 
-@if (productions$ | ngrxPush; as productions) {
+@if (productions$ | async; as productions) {
     <div class="row my-4">
-        @if (productions | resolveProduction: (inputCovered$ | ngrxPush) ?? []; as productionInputs) {
+        @if (productions | resolveProduction: (inputCovered$ | async) ?? []; as productionInputs) {
             <div class="col-md-6">
                 @if (productions.length) {
                     <h4>Machines</h4>
@@ -20,26 +20,26 @@
                     }
                     @if (isMissing(productionInputs); as missingInputs) {
                         <h4 class="mt-5">Inputs</h4>
-                        @for (input of missingInputs; track input) {
+                        @for (input of missingInputs; track $index) {
                             <app-missing-input [input]="input"></app-missing-input>
                         }
                     }
                 }
                 <div class="mt-5">
                     <app-action-add-production class="mb-4 d-block"></app-action-add-production>
-                    @if (productions.length || (productionsService.productions$ | ngrxPush)?.length) {
+                    @if (productions.length || (productionsService.productions$ | async)?.length) {
                         <app-action-production></app-action-production>
                     }
                 </div>
             </div>
         }
         <div class="col-md-6">
-            @switch (breakpoint.md | modalOrInline | ngrxPush) {
+            @switch (breakpoint.md | modalOrInline | async) {
                 @case ('modal') {
                     <app-modal [active$]="edit$" [content]="content"></app-modal>
                 }
                 @case ('inline') {
-                    @if (edit$ | sodAnimate: {strategy: 'truthy'} | ngrxPush; as state) {
+                    @if (edit$ | sodAnimate: {strategy: 'truthy'} | async; as state) {
                         <div class="sod-animate--fade" [class.show]="state.enter && !state.leave">
                             <ng-container *ngTemplateOutlet="content; context: {$implicit: state.value}"></ng-container>
                         </div>

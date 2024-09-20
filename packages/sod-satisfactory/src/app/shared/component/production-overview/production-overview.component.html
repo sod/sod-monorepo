@@ -1,4 +1,4 @@
-@if ({edit: edit$ | ngrxPush}; as state) {
+@if ({edit: edit$ | async}; as state) {
     <div
         class="box p-2 pb-0 border bg-dark-subtle text-dark-emphasis rounded-3"
         [ngClass]="production.built ? 'border-success' : 'border-dark-subtle'"

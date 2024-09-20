@@ -1,4 +1,4 @@
-import {DOCUMENT, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, effect, HostListener, Inject, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {PushPipe, RenderScheduler} from '@ngrx/component';
@@ -15,7 +15,7 @@ const ThemeSchema = z.enum(['dark', 'light']);
     providers: [RenderScheduler],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    imports: [RouterOutlet, NgTemplateOutlet, PushPipe],
+    imports: [RouterOutlet, NgTemplateOutlet, PushPipe, AsyncPipe],
 })
 export class AppComponent implements OnInit {
     @HostListener('window:keydown')

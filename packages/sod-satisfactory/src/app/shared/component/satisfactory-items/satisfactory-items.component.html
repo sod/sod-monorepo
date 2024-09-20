@@ -1,7 +1,7 @@
 <div class="row gx-2" [class.justify-content-end]="target === 'outputs'">
     @for (itemPackage of values; track name($index, itemPackage)) {
         <div class="col-6 d-flex mb-2">
-            @if ({input: productionInputs?.get(itemPackage.itemName)} | sodAnimate: {strategy: 'truthy'} | ngrxPush; as state) {
+            @if ({input: productionInputs?.get(itemPackage.itemName)} | sodAnimate: {strategy: 'truthy'} | async; as state) {
                 <div
                     class="item rounded border shadow-sm d-flex p-2 bg-body text-body w-100 sod-animate--fade"
                     [class.show]="state.enter && !state.leave"

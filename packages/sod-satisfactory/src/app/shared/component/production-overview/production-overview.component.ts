@@ -1,4 +1,4 @@
-import {NgClass} from '@angular/common';
+import {AsyncPipe, NgClass} from '@angular/common';
 import {Component, Input} from '@angular/core';
 import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
@@ -15,7 +15,7 @@ import {SatisfactoryItemsComponent} from '../satisfactory-items/satisfactory-ite
     templateUrl: './production-overview.component.html',
     styleUrls: ['./production-overview.component.scss'],
     standalone: true,
-    imports: [NgClass, SatisfactoryItemsComponent, PushPipe, ProductionTitlePipe],
+    imports: [NgClass, SatisfactoryItemsComponent, PushPipe, ProductionTitlePipe, AsyncPipe],
 })
 export class ProductionOverviewComponent {
     @Input() production!: Production;

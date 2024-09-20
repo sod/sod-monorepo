@@ -1,4 +1,4 @@
-import {NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
 import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
@@ -36,6 +36,7 @@ import {selectInputCovered, selectPlannerEditProduction, selectProductions} from
         AnimatePipe,
         ResolveProductionPipe,
         ModalOrInlinePipe,
+        AsyncPipe,
     ],
 })
 export class DefaultComponent {

@@ -11,11 +11,11 @@
         <br />
         Theme:
         <ng-container
-            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'dark', checked: (theme.observable | ngrxPush) === 'dark'}"
+            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'dark', checked: (theme.observable | async) === 'dark'}"
         ></ng-container>
         or
         <ng-container
-            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'light', checked: (theme.observable | ngrxPush) === 'light'}"
+            *ngTemplateOutlet="themeTemplate; context: {$implicit: 'light', checked: (theme.observable | async) === 'light'}"
         ></ng-container>
     </div>
 </div>
