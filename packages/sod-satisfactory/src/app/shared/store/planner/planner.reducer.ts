@@ -5,6 +5,7 @@ import {Production} from 'src/app/shared/entities/production';
 import {productionDtoSchema} from 'src/app/shared/entities/production-dto';
 import {Recipe} from 'src/app/shared/entities/recipe';
 import {removeFromArray} from 'src/app/shared/function/remove-from-array';
+import {swapArrayPosition} from 'src/app/shared/function/swap-array-position';
 import {getNewUuid} from 'src/app/shared/function/uuid';
 import {z} from 'zod';
 import * as PlannerActions from './planner.actions';
@@ -65,6 +66,18 @@ export const reducer = createReducer(
         edit: {index: state.productions.length},
         productions: state.productions.concat(Production.createDto(action.itemPackage)),
     })),
+
+    on(
+        PlannerActions.productionDragAndDropped,
+        (state: PlannerState, {uuid, index}): PlannerState => ({
+            ...state,
+            productions: swapArrayPosition(
+                state.productions,
+                state.productions.findIndex((production) => production.uuid === uuid),
+                index,
+            ),
+        }),
+    ),
 
     on(PlannerActions.removeProductionClicked, (state, {relation}) => ({
         ...state,

@@ -23,6 +23,7 @@ import {
     plannerStoreNotFound,
     plannerStoreRestored,
     productionBuiltClicked,
+    productionDragAndDropped,
     productionUpNextClicked,
     recipeSelected,
     removeItemPackage,
@@ -55,6 +56,7 @@ export class AppEffects {
                     productionBuiltClicked,
                     productionUpNextClicked,
                     inputCoveredClicked,
+                    productionDragAndDropped,
                 ),
                 switchMapTo(this.store.pipe(take(1))),
                 tap((store: GlobalState) => {

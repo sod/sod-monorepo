@@ -11,8 +11,21 @@ import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {InputCoveredDto, PlannerState} from './planner.reducer';
 
 export const plannerStoreRestored = createAction('[Planner] Store Restored', props<{state: PlannerState}>());
-export const plannerStoreNotFound = createAction('[Planner] Store Not Found', props<{uuid: string; navigationId: number}>());
+export const plannerStoreNotFound = createAction(
+    '[Planner] Store Not Found',
+    props<{
+        uuid: string;
+        navigationId: number;
+    }>(),
+);
 
+export const productionDragAndDropped = createAction(
+    '[Planner] Production Drag And Dropped',
+    props<{
+        uuid: string;
+        index: number;
+    }>(),
+);
 export const addItemToProductionClicked = createAction('[Planner] Add Item To Production Clicked');
 export const createProductionClicked = createAction('[Planner] Create Production Clicked');
 export const addProductionWithOutputNameClicked = createAction(
@@ -37,7 +50,12 @@ export const recipeSelected = createAction(
     '[Planner] Recipe Selected',
     props<{relation: ItemParentRelationForProduction; recipe: RecipeDataDto}>(),
 );
-export const removeItemPackage = createAction('[Planner] Remove Item Package', props<{relation: ItemParentRelationForItemPackage}>());
+export const removeItemPackage = createAction(
+    '[Planner] Remove Item Package',
+    props<{
+        relation: ItemParentRelationForItemPackage;
+    }>(),
+);
 
 export const updateProductionClicked = createAction(
     '[Planner] Update Production',

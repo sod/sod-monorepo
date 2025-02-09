@@ -3,7 +3,14 @@
   top: 1rem;
 }
 
-//.production-container {
-//  transition: all 0.3s ease;
-//  position: relative;
-//}
+/* purgecss start ignore */
+
+.cdk-drag-placeholder {
+  opacity: .2;
+}
+
+.cdk-drop-list-dragging > * {
+  transition: transform 0.2s ease-out;
+}
+
+/* purgecss end ignore */

@@ -5,12 +5,13 @@
 @if (productions$ | async; as productions) {
     <div class="row my-4">
         @if (productions | resolveProduction: (inputCovered$ | async) ?? []; as productionInputs) {
-            <div class="col-md-6">
+            <div class="col-md-6" cdkDropList (cdkDropListDropped)="dropped($event)" [cdkDropListData]="productions">
                 @if (productions.length) {
                     <h4>Machines</h4>
                     @for (production of productions; track production.uuid) {
                         @if (production.hasRecipes()) {
                             <app-production-overview
+                                cdkDrag
                                 [production]="production"
                                 [productionInputs]="productionInputs"
                                 [positionInList]="$index"

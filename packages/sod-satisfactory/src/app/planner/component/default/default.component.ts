@@ -1,11 +1,12 @@
+import {CdkDrag, CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
-import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
 import {sortBy} from 'lodash-es';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ProductionsService} from 'src/app/shared/service/productions-service';
+import {productionDragAndDropped} from 'src/app/shared/store/planner/planner.actions';
 import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 import {ActionAddProductionComponent} from '../../../shared/component/action-add-production/action-add-production.component';
 import {ActionProductionComponent} from '../../../shared/component/action-production/action-production.component';
@@ -31,8 +32,9 @@ import {selectInputCovered, selectPlannerEditProduction, selectProductions} from
         ActionProductionComponent,
         ModalComponent,
         NgTemplateOutlet,
+        CdkDropList,
+        CdkDrag,
         ProductionComponent,
-        PushPipe,
         AnimatePipe,
         ResolveProductionPipe,
         ModalOrInlinePipe,
@@ -62,5 +64,13 @@ export class DefaultComponent {
         const missing = inputs.array.filter((input) => input.isMissing());
 
         return missing.length ? missing : undefined;
+    }
+
+    dropped(event: CdkDragDrop<Production[]>) {
+        console.log(event);
+        const production = event.container.data[event.previousIndex];
+        if (production && event.previousIndex !== event.currentIndex) {
+            this.store.dispatch(productionDragAndDropped({uuid: production.uuid, index: event.currentIndex}));
+        }
     }
 }
