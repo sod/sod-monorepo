@@ -5,6 +5,7 @@ import {Production} from 'src/app/shared/entities/production';
 import {productionDtoSchema} from 'src/app/shared/entities/production-dto';
 import {Recipe} from 'src/app/shared/entities/recipe';
 import {removeFromArray} from 'src/app/shared/function/remove-from-array';
+import {getNewUuid} from 'src/app/shared/function/uuid';
 import {z} from 'zod';
 import * as PlannerActions from './planner.actions';
 
@@ -38,7 +39,7 @@ export const reducer = createReducer(
     on(PlannerActions.plannerStoreRestored, (state, action) => ({
         uuid: action.state.uuid,
         edit: action.state.edit,
-        productions: action.state.productions || [],
+        productions: action.state.productions?.map((dto) => ({uuid: getNewUuid(), ...dto})) ?? [],
         inputCovered: action.state.inputCovered || [],
     })),
 

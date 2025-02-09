@@ -8,13 +8,13 @@
             <div class="col-md-6">
                 @if (productions.length) {
                     <h4>Machines</h4>
-                    @for (production of productions; track $index) {
+                    @for (production of productions; track production.uuid) {
                         @if (production.hasRecipes()) {
                             <app-production-overview
                                 [production]="production"
                                 [productionInputs]="productionInputs"
                                 [positionInList]="$index"
-                                class="mb-3 d-block"
+                                class="mb-3 d-block production-container"
                             ></app-production-overview>
                         }
                     }

@@ -4,8 +4,10 @@ import {ItemParentRelationForProduction} from 'src/app/shared/entities/item-pare
 import {ProductionDto} from 'src/app/shared/entities/production-dto';
 import {Recipe} from 'src/app/shared/entities/recipe';
 import {updateInArray} from 'src/app/shared/function/update-in-array';
+import {getNewUuid} from 'src/app/shared/function/uuid';
 
 export class Production {
+    readonly uuid: string = this.dto.uuid ?? getNewUuid();
     readonly recipe: Recipe = new Recipe(this.dto.recipe, this);
     readonly clockSpeed1: number = this.dto.clockSpeed1 ?? 100;
     readonly clockSpeed2: number = this.dto.clockSpeed2 ?? 100;
@@ -52,15 +54,8 @@ export class Production {
         const outputs: ItemPackageDto[] = output ? [ItemPackage.createDto(output)] : [];
 
         return {
+            uuid: getNewUuid(),
             recipe: {inputs: [], outputs, producedIn: 'Machine'},
         };
-    }
-
-    static connectDependencies(productions: Production[]): Production[] {
-        for (let production of productions) {
-            // production.recipe;
-        }
-
-        return productions;
     }
 }

@@ -3,6 +3,7 @@ import {z} from 'zod';
 
 export const productionDtoSchema = z.object({
     recipe: recipeDtoSchema,
+    uuid: z.string().optional(),
     clockSpeed1: z.number().optional(),
     clockSpeed2: z.number().optional(),
     somersloop: z.boolean().optional(),

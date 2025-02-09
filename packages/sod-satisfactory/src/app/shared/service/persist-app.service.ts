@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {distinctUntilKeyChanged, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {v4 as uuidv4} from 'uuid';
 import {z} from 'zod';
 import {isDefined} from '../function/is-defined';
 import {validateSchema} from '../function/validate-schema';
@@ -57,14 +56,6 @@ export class PersistAppService {
 
     getPersistedUuid(): string | undefined {
         return this.uuids.get()?.[0]?.uuid;
-    }
-
-    getNewUuid(): string {
-        return uuidv4().substring(0, 8);
-    }
-
-    isUuid(uuid?: string): boolean {
-        return /^[a-f0-9]{8}$/.test(uuid ?? '');
     }
 
     restore(uuid?: string): PersistAppData | undefined {

@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {pick} from 'lodash-es';
 import {EMPTY} from 'rxjs';
 import {delay, mergeMap, switchMap, switchMapTo, take, tap} from 'rxjs/operators';
+import {getNewUuid, isUuid} from 'src/app/shared/function/uuid';
 import {InitialRenderService} from '../../service/initial-render-service';
 import {PersistAppService} from '../../service/persist-app.service';
 import {ProductionsService} from '../../service/productions-service';
@@ -84,7 +85,7 @@ export class AppEffects {
             this.actions$.pipe(
                 ofType(createProductionClicked),
                 tap(() => {
-                    this.router.navigate([`/id/${this.persistAppService.getNewUuid()}`]);
+                    this.router.navigate([`/id/${getNewUuid()}`]);
                 }),
             ),
         {dispatch: false},
@@ -100,10 +101,8 @@ export class AppEffects {
                         const data = uuid ? this.persistAppService.restore(uuid) : undefined;
                         const navigationId = (this.navigationId += 1);
 
-                        if (!data && !this.persistAppService.isUuid(uuid)) {
-                            this.router.navigate([
-                                `/id/${this.persistAppService.getPersistedUuid() ?? this.persistAppService.getNewUuid()}`,
-                            ]);
+                        if (!data && !isUuid(uuid)) {
+                            this.router.navigate([`/id/${this.persistAppService.getPersistedUuid() ?? getNewUuid()}`]);
                             return EMPTY;
                         }
 
