@@ -1,0 +1,28 @@
+import {ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
+import {RenderScheduler} from '@ngrx/component';
+import {filter} from 'rxjs';
+
+@Component({
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [RenderScheduler],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterOutlet],
+})
+export class AppComponent implements OnInit {
+    @HostListener('window:keydown')
+    handleKeyDown() {
+        this.renderScheduler.schedule();
+    }
+
+    constructor(
+        private readonly router: Router,
+        private readonly renderScheduler: RenderScheduler,
+    ) {}
+
+    ngOnInit(): void {
+        this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe(() => this.renderScheduler.schedule());
+    }
+}

@@ -1,4 +1,4 @@
-@import '../../../../styles/variables';
+@import '@sod/sdk/src/styles/variables';
 
 .dropdown.active {
     z-index: $zindex-modal-backdrop + 1;
