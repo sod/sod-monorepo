@@ -28,7 +28,7 @@ build:
 
 upload:
 	@echo "$(COLOR_BOLD)Stage: Uploading$(COLOR_RESET)"
-	tar -czf dist/$(VERSION_TAR) --cd $(LOCAL_SOURCES) .
+	tar --no-xattrs -czf dist/$(VERSION_TAR) --cd $(LOCAL_SOURCES) .
 	ssh $(SOD_SERVER) "rm -rf $(REMOTE_SOURCES)/$(VERSION) && mkdir -p $(REMOTE_SOURCES)/$(VERSION)"
 	scp -r dist/$(VERSION_TAR) $(SOD_SERVER):$(REMOTE_SOURCES)
 	ssh $(SOD_SERVER) "tar -xzf $(REMOTE_SOURCES)/$(VERSION_TAR) -C $(REMOTE_SOURCES)/$(VERSION) && rm $(REMOTE_SOURCES)/$(VERSION_TAR)"
