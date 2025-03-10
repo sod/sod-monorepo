@@ -11,8 +11,7 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
     selector: 'app-missing-input',
     templateUrl: './missing-input.component.html',
     styleUrls: ['./missing-input.component.scss'],
-    standalone: true,
-    imports: [NgClass, SatisfactoryItemImageComponent, AbsolutePipe, ToFixedPipe],
+    imports: [NgClass, SatisfactoryItemImageComponent, AbsolutePipe, ToFixedPipe]
 })
 export class MissingInputComponent {
     @Input({required: true}) input!: ProductionInput;

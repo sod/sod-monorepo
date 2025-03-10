@@ -6,8 +6,7 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
     selector: 'app-package-images',
     templateUrl: './package-images.component.html',
     styleUrls: ['./package-images.component.scss'],
-    standalone: true,
-    imports: [SatisfactoryItemImageComponent],
+    imports: [SatisfactoryItemImageComponent]
 })
 export class PackageImagesComponent {
     @Input() items!: Pick<ItemPackage, 'itemName' | 'amount'>[];

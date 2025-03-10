@@ -24,7 +24,6 @@ import {selectInputCovered, selectPlannerEditProduction, selectProductions} from
     selector: 'app-default',
     templateUrl: './default.component.html',
     styleUrls: ['./default.component.scss'],
-    standalone: true,
     imports: [
         ProductionOverviewComponent,
         MissingInputComponent,
@@ -39,7 +38,7 @@ import {selectInputCovered, selectPlannerEditProduction, selectProductions} from
         ResolveProductionPipe,
         ModalOrInlinePipe,
         AsyncPipe,
-    ],
+    ]
 })
 export class DefaultComponent {
     protected breakpoint = {md: 768} as const;

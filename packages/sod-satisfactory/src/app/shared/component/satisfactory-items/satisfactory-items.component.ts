@@ -1,6 +1,5 @@
 import {AsyncPipe, NgClass} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
@@ -14,8 +13,7 @@ import {SatisfactoryItemComponent} from '../satisfactory-item/satisfactory-item.
     selector: 'app-satisfactory-items',
     templateUrl: './satisfactory-items.component.html',
     styleUrls: ['./satisfactory-items.component.scss'],
-    standalone: true,
-    imports: [NgClass, SatisfactoryItemComponent, PushPipe, AnimatePipe, AsyncPipe],
+    imports: [NgClass, SatisfactoryItemComponent, AnimatePipe, AsyncPipe],
 })
 export class SatisfactoryItemsComponent {
     @Input() values!: ItemPackage[];

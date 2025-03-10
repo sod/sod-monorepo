@@ -49,8 +49,7 @@ const recipesDataSorted = recipesData
     selector: 'app-item',
     templateUrl: './item.component.html',
     styleUrls: ['./item.component.scss'],
-    standalone: true,
-    imports: [DropdownComponent_1, InputComponent, FormsModule, InputControlDirective, PackageImagesComponent, AsyncPipe],
+    imports: [DropdownComponent_1, InputComponent, FormsModule, InputControlDirective, PackageImagesComponent, AsyncPipe]
 })
 export class ItemComponent {
     @Input() recipe!: Recipe;

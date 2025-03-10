@@ -6,8 +6,7 @@ import {SatisfactoriyItemImagePipe} from 'src/app/shared/pipe/satisfactoriy-item
     selector: 'app-satisfactory-item-image',
     templateUrl: './satisfactory-item-image.component.html',
     styleUrls: ['./satisfactory-item-image.component.scss'],
-    standalone: true,
-    imports: [SatisfactoriyItemImagePipe],
+    imports: [SatisfactoriyItemImagePipe]
 })
 export class SatisfactoryItemImageComponent {
     @Input() itemPackage!: Pick<ItemPackage, 'itemName'>;

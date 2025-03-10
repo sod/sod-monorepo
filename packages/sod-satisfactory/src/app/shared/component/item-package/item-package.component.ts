@@ -15,8 +15,7 @@ import {ItemComponent} from '../item/item.component';
     selector: 'app-item-package',
     templateUrl: './item-package.component.html',
     styleUrls: ['./item-package.component.scss'],
-    standalone: true,
-    imports: [ItemComponent, InputComponent, FormsModule, InputControlDirective, AmountWithModifiersPipe],
+    imports: [ItemComponent, InputComponent, FormsModule, InputControlDirective, AmountWithModifiersPipe]
 })
 export class ItemPackageComponent {
     @Input() recipe!: Recipe;

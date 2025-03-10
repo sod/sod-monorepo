@@ -10,8 +10,7 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
     selector: 'app-satisfactory-item',
     templateUrl: './satisfactory-item.component.html',
     styleUrls: ['./satisfactory-item.component.scss'],
-    standalone: true,
-    imports: [SatisfactoryItemImageComponent, AmountWithModifiersPipe],
+    imports: [SatisfactoryItemImageComponent, AmountWithModifiersPipe]
 })
 export class SatisfactoryItemComponent {
     @Input() itemPackage!: ItemPackage;

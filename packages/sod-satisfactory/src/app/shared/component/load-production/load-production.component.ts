@@ -1,7 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
 import {BehaviorSubject} from 'rxjs';
 import {ProductionsService} from '../../service/productions-service';
@@ -13,8 +12,7 @@ import {SatisfactoryItemComponent} from '../satisfactory-item/satisfactory-item.
     selector: 'app-load-production',
     templateUrl: './load-production.component.html',
     styleUrls: ['./load-production.component.scss'],
-    standalone: true,
-    imports: [ModalComponent, RouterLink, SatisfactoryItemComponent, PushPipe, AsyncPipe],
+    imports: [ModalComponent, RouterLink, SatisfactoryItemComponent, AsyncPipe],
 })
 export class LoadProductionComponent {
     protected open$ = new BehaviorSubject<boolean>(false);

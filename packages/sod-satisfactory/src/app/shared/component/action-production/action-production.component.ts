@@ -7,8 +7,7 @@ import {LoadProductionComponent} from '../load-production/load-production.compon
     selector: 'app-action-production',
     templateUrl: './action-production.component.html',
     styleUrls: ['./action-production.component.scss'],
-    standalone: true,
-    imports: [LoadProductionComponent],
+    imports: [LoadProductionComponent]
 })
 export class ActionProductionComponent {
     createProductionClicked = createProductionClicked;

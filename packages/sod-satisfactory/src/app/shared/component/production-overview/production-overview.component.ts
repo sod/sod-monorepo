@@ -1,7 +1,5 @@
-import {CdkDragHandle} from '@angular/cdk/drag-drop';
 import {AsyncPipe, NgClass} from '@angular/common';
 import {Component, Input} from '@angular/core';
-import {PushPipe} from '@ngrx/component';
 import {Store} from '@ngrx/store';
 import {Production} from 'src/app/shared/entities/production';
 import {ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
@@ -15,8 +13,7 @@ import {SatisfactoryItemsComponent} from '../satisfactory-items/satisfactory-ite
     selector: 'app-production-overview',
     templateUrl: './production-overview.component.html',
     styleUrls: ['./production-overview.component.scss'],
-    standalone: true,
-    imports: [NgClass, SatisfactoryItemsComponent, PushPipe, ProductionTitlePipe, AsyncPipe, CdkDragHandle],
+    imports: [NgClass, SatisfactoryItemsComponent, ProductionTitlePipe, AsyncPipe],
 })
 export class ProductionOverviewComponent {
     @Input() production!: Production;

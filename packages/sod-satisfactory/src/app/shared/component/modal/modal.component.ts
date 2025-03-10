@@ -1,6 +1,5 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, TemplateRef} from '@angular/core';
-import {PushPipe} from '@ngrx/component';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 
@@ -8,8 +7,7 @@ import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
     selector: 'app-modal',
     templateUrl: './modal.component.html',
     styleUrls: ['./modal.component.scss'],
-    standalone: true,
-    imports: [NgTemplateOutlet, PushPipe, AnimatePipe, AsyncPipe],
+    imports: [NgTemplateOutlet, AnimatePipe, AsyncPipe],
 })
 export class ModalComponent {
     @Input({required: true}) content!: TemplateRef<any>;

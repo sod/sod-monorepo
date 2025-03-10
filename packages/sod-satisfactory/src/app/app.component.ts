@@ -1,7 +1,7 @@
-import {AsyncPipe, DOCUMENT, NgClass, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, NgClass, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, effect, HostListener, Inject, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
-import {PushPipe, RenderScheduler} from '@ngrx/component';
+import {RenderScheduler} from '@ngrx/component';
 import {BehaviorSubject, filter} from 'rxjs';
 import {ModalComponent} from 'src/app/shared/component/modal/modal.component';
 import {SettingsService} from 'src/app/shared/service/settings-service';
@@ -12,8 +12,7 @@ import {SettingsService} from 'src/app/shared/service/settings-service';
     styleUrls: ['./app.component.scss'],
     providers: [RenderScheduler],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [RouterOutlet, NgTemplateOutlet, PushPipe, AsyncPipe, ModalComponent, NgClass],
+    imports: [RouterOutlet, NgTemplateOutlet, ModalComponent, NgClass],
 })
 export class AppComponent implements OnInit {
     @HostListener('window:keydown')

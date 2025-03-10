@@ -16,7 +16,6 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
     selector: 'app-production',
     templateUrl: './production.component.html',
     styleUrls: ['./production.component.scss'],
-    standalone: true,
     imports: [
         ProductionInputOrOutputComponent,
         InputComponent,
@@ -25,7 +24,7 @@ import {SatisfactoryItemImageComponent} from '../satisfactory-item-image/satisfa
         NgClass,
         SatisfactoryItemImageComponent,
         IsThemePipe,
-    ],
+    ]
 })
 export class ProductionComponent {
     @Input() production!: Production;

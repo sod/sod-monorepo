@@ -9,8 +9,7 @@ import {ItemPackageComponent} from '../item-package/item-package.component';
     selector: 'app-production-input-or-output',
     templateUrl: './production-input-or-output.component.html',
     styleUrls: ['./production-input-or-output.component.scss'],
-    standalone: true,
-    imports: [ItemPackageComponent, PlusOneUndefinedPipe],
+    imports: [ItemPackageComponent, PlusOneUndefinedPipe]
 })
 export class ProductionInputOrOutputComponent implements AfterViewInit {
     @Input() production!: Production;

@@ -1,6 +1,5 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, OnDestroy, OnInit, Output, TemplateRef} from '@angular/core';
-import {PushPipe} from '@ngrx/component';
 import {BehaviorSubject, Subject, delay, filter, fromEvent, merge, takeUntil} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {isDefined} from 'src/app/shared/function/is-defined';
@@ -14,8 +13,7 @@ export type DropdownCommand = 'start' | 'end' | 'prev' | 'next' | 'submit';
     selector: 'app-dropdown',
     templateUrl: './dropdown.component.html',
     styleUrls: ['./dropdown.component.scss'],
-    standalone: true,
-    imports: [NgTemplateOutlet, PushPipe, AnimatePipe, AsyncPipe],
+    imports: [NgTemplateOutlet, AnimatePipe, AsyncPipe],
 })
 export class DropdownComponent implements OnInit, OnDestroy {
     @Input({required: true}) element!: Element;
