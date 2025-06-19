@@ -2,10 +2,10 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Store} from '@ngrx/store';
+import {ModalComponent} from '@sod/sdk/src/lib/component/modal/modal.component';
 import {BehaviorSubject} from 'rxjs';
 import {ProductionsService} from '../../service/productions-service';
 import {selectActiveUuid} from '../../store/planner/planner.selectors';
-import {ModalComponent} from '../modal/modal.component';
 import {SatisfactoryItemComponent} from '../satisfactory-item/satisfactory-item.component';
 
 @Component({

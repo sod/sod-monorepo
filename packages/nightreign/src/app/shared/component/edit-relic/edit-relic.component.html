@@ -1,0 +1,18 @@
+<div class="bg-dark-subtle text-dark-emphasis rounded-3 sod-shadow p-2 pb-2">
+    <app-relic-color [(color)]="color" class="mb-2 d-block" />
+    <!--    <app-autosuggest [label]="'Color'" [(model)]="color" [items]="relicColors" class="mb-2 d-block" />-->
+    @for (property of properties; track property) {
+        <app-autosuggest [label]="`Property ${$index + 1}`" [(model)]="property" [items]="relicProperties" class="mb-2 d-block" />
+    }
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-primary" (click)="saveClicked()">
+            <i class="bi bi-cloud"></i>
+            Save
+        </button>
+        <button class="btn btn-outline-danger" (click)="delete.emit(toRelicDto())">
+            <i class="bi bi-trash"></i>
+            Delete
+        </button>
+    </div>
+</div>

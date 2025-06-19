@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "serve": "POSTCSS_ENV=dev ng serve"
+        "serve": "POSTCSS_ENV=dev ng serve --no-hmr"
     },
     "keywords": [],
     "author": "",
@@ -21,13 +21,6 @@
         "@angular/platform-browser-dynamic": "^19.2.1",
         "@angular/router": "^19.2.1",
         "@fullhuman/postcss-purgecss": "^6.0.0",
-        "@ngrx/component": "^19.0.1",
-        "@ngrx/effects": "^19.0.1",
-        "@ngrx/entity": "^19.0.1",
-        "@ngrx/router-store": "^19.0.1",
-        "@ngrx/schematics": "^19.0.1",
-        "@ngrx/store": "^19.0.1",
-        "@ngrx/store-devtools": "^19.0.1",
         "@types/lodash-es": "^4.17.12",
         "@types/uuid": "^10.0.0",
         "bootstrap": "^5",

@@ -7,7 +7,7 @@ const matchesPerfectDefault = (value: any): string[] => [String(value)];
 export class SearchService {
     search<T>(
         needle: unknown,
-        haystack: T[],
+        haystack: readonly T[],
         {
             matchesFuzzy = matchesFuzzyDefault,
             matchesPerfect = matchesPerfectDefault,

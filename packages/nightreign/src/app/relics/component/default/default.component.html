@@ -1,1 +1,74 @@
-foo
+<h1 class="my-4">Nightreign Relics</h1>
+
+<p>This page lets you list and find your relics</p>
+
+<app-panel [title]="'Views'">
+    <button class="btn btn-outline-secondary mb-3" (click)="editRelicView.set(createNewRelicView())">
+        <i class="bi bi-plus"></i>
+        Add View ...
+    </button>
+    <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="relicsService.activeViewUuid" value="" type="radio" name="view" id="default" />
+        <label class="form-check-label" for="default"> Every Relic </label>
+    </div>
+    @for (relicView of relicsService.views(); track relicView.uuid) {
+        <div class="form-check">
+            <input
+                class="form-check-input"
+                [(ngModel)]="relicsService.activeViewUuid"
+                [value]="relicView.uuid"
+                type="radio"
+                name="view"
+                [id]="relicView.uuid"
+            />
+            <label class="form-check-label" [for]="relicView.uuid">
+                {{ relicView.name }}
+                <button
+                    class="ml-4 btn btn-link p-0 ms-2 edit-button"
+                    type="button"
+                    (click)="editRelicView.set(relicView); relicsService.activeViewUuid.set(relicView.uuid)"
+                >
+                    Edit
+                </button>
+            </label>
+        </div>
+    }
+
+    @if (editRelicView(); as view) {
+        <app-edit-view
+            [view]="view"
+            (liveUpdate)="editRelicViewChanges.set($event)"
+            (save)="saveRelicView($event)"
+            (delete)="deleteRelicView($event.uuid)"
+        />
+    }
+</app-panel>
+
+<app-panel [title]="'Relics'">
+    @let item = editRelic();
+
+    @if (item && !relicsService.uuids().has(item.uuid)) {
+        <app-panel [title]="'Add New Relic'" theme="form">
+            @let item = editRelic();
+
+            @if (item && !relicsService.uuids().has(item.uuid)) {
+                <app-edit-relic [relic]="item" (save)="saveRelic($event)" (delete)="editRelic.set(undefined)" />
+            }
+        </app-panel>
+    } @else {
+        <button class="btn btn-outline-secondary mb-3" (click)="editRelic.set(createNewRelic('green'))">
+            <i class="bi bi-plus"></i>
+            Add New Relic ...
+        </button>
+    }
+
+    @for (relic of relics(); track relic.uuid) {
+        @if (editRelic() === relic) {
+            <app-panel [title]="'Edit Relic'" theme="form">
+                <app-edit-relic [relic]="relic" (save)="saveRelic($event)" (delete)="deleteRelic($event.uuid)" />
+            </app-panel>
+        } @else {
+            <app-relic [relic]="relic" (edit)="editRelic.set(relic)" [highlight]="activeViewOrEditView()" />
+        }
+    }
+</app-panel>

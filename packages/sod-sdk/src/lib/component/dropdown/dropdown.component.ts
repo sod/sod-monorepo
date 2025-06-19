@@ -1,9 +1,9 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, OnDestroy, OnInit, Output, TemplateRef} from '@angular/core';
 import {AnimatePipe} from '@sod/sdk/src/lib/animate/pipe/animate.pipe';
+import {isDefined} from '@sod/sdk/src/lib/function/is-defined';
 import {BehaviorSubject, Subject, delay, filter, fromEvent, merge, takeUntil} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {isDefined} from 'src/app/shared/function/is-defined';
 
 let id = 0;
 const open$ = new BehaviorSubject(0);

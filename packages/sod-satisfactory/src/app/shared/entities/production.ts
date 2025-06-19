@@ -1,10 +1,10 @@
+import {updateInArray} from '@sod/sdk/src/lib/function/update-in-array';
+import {getNewUuid} from '@sod/sdk/src/lib/function/uuid';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
 import {ItemPackageDto} from 'src/app/shared/entities/item-package-dto';
 import {ItemParentRelationForProduction} from 'src/app/shared/entities/item-parent-relations';
 import {ProductionDto} from 'src/app/shared/entities/production-dto';
 import {Recipe} from 'src/app/shared/entities/recipe';
-import {updateInArray} from 'src/app/shared/function/update-in-array';
-import {getNewUuid} from 'src/app/shared/function/uuid';
 
 export class Production {
     readonly uuid: string = this.dto.uuid ?? getNewUuid();

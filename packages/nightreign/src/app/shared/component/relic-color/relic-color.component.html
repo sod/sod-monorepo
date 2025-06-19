@@ -1,0 +1,13 @@
+@for (item of relicColors; track $index) {
+    <button
+        class="btn btn-sm me-1 text-capitalize"
+        [class.btn-outline-red]="item === 'red'"
+        [class.btn-outline-green]="item === 'green'"
+        [class.btn-outline-blue]="item === 'blue'"
+        [class.btn-outline-yellow]="item === 'yellow'"
+        [class.active]="item === color()"
+        (click)="color.set(item)"
+    >
+        {{ item }}
+    </button>
+}

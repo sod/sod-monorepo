@@ -3,17 +3,14 @@ import {effect, Signal, signal} from '@angular/core';
 export function skipFirst<T>(original: Signal<T>): Signal<T> {
     let init = true;
     const delegate = signal<T>(original());
-    effect(
-        () => {
-            const next = original();
-            if (init) {
-                init = false;
-                return;
-            }
-            delegate.set(next);
-        },
-        {allowSignalWrites: true},
-    );
+    effect(() => {
+        const next = original();
+        if (init) {
+            init = false;
+            return;
+        }
+        delegate.set(next);
+    });
 
     return delegate;
 }

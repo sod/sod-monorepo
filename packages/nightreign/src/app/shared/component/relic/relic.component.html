@@ -1,0 +1,15 @@
+<!-- text-white text-muted -->
+<div class="d-flex align-items-center mb-0 overflow-hidden">
+    <div class="color rounded-4" [style.background-color]="colorAsCss[relic().color!]"></div>
+    <div class="text-capitalize ms-2">{{ relic().color }}</div>
+    <button class="ml-4 btn btn-link p-0 ms-2 edit-button" type="button" (click)="edit.emit(relic())">Edit</button>
+</div>
+<ol>
+    @for (prop of properties(); track $index) {
+        <li>
+            @for (chunk of prop; track $index) {
+                <span [attr.class]="chunk.class">{{ chunk.value }}</span>
+            }
+        </li>
+    }
+</ol>

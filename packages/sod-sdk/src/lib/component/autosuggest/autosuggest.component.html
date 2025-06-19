@@ -1,0 +1,27 @@
+<app-dropdown [dropdown]="dropdownTemplate" [element]="element" (keyboard)="onKeyboard($event)" #dropdownController>
+    <app-input [label]="label()">
+        <input
+            #element
+            appInputControl
+            type="search"
+            [ngModel]="model()"
+            (input)="input(element.value)"
+            (focus)="open()"
+            (blur)="close($event)"
+        />
+    </app-input>
+</app-dropdown>
+
+<ng-template #dropdownTemplate>
+    @for (item of suggestions(); track item) {
+        <li class="pointer dropdown-item" [class.active]="item === model()" (click)="$event.preventDefault(); select(item); close()">
+            <ng-container *ngTemplateOutlet="itemTemplate() ?? defaultItemTemplate; context: {$implicit: item}" />
+        </li>
+    } @empty {
+        <li class="dropdown-item disabled">No Results</li>
+    }
+</ng-template>
+
+<ng-template #defaultItemTemplate let-item>
+    {{ item }}
+</ng-template>

@@ -29,7 +29,7 @@ $gray-900: rgb(28, 28, 30);
 
 $secondary: $gray-200;
 
-$body-color-dark: $gray-500;
+$body-color-dark: $gray-200;
 $dark-bg-subtle: $gray-100;
 $dark-border-subtle: $gray-100;
 $dark-border-subtle-dark: $gray-900;
@@ -59,4 +59,21 @@ $warning: $orange;
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/variables-dark';
+
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark,
+        "blue": $blue,
+        "red": $red,
+        "yellow": $yellow,
+        "green": $green,
+        "gray-600": $gray-600
+);
+
 @import 'bootstrap/scss/maps';

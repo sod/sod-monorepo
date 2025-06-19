@@ -1,4 +1,3 @@
-import {NgClass, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 
@@ -7,6 +6,6 @@ import {RouterOutlet} from '@angular/router';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [RouterOutlet, NgTemplateOutlet, NgClass],
+    imports: [RouterOutlet],
 })
 export class AppComponent {}

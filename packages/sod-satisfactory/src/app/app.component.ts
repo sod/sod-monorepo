@@ -2,8 +2,8 @@ import {DOCUMENT, NgClass, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, effect, HostListener, Inject, OnInit} from '@angular/core';
 import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {RenderScheduler} from '@ngrx/component';
+import {ModalComponent} from '@sod/sdk/src/lib/component/modal/modal.component';
 import {BehaviorSubject, filter} from 'rxjs';
-import {ModalComponent} from 'src/app/shared/component/modal/modal.component';
 import {SettingsService} from 'src/app/shared/service/settings-service';
 
 @Component({

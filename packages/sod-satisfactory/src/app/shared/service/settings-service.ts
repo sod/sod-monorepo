@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LocalStorageService} from 'src/app/shared/service/local-storage-service';
+import {LocalStorageService} from '@sod/sdk/src/lib/service/local-storage-service';
 import {z} from 'zod';
 
 export const ThemeSchema = z.enum(['dark', 'light']);

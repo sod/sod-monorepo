@@ -3,6 +3,7 @@ import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AnimatePipe} from '@sod/sdk/src/lib/animate/pipe/animate.pipe';
+import {ModalComponent} from '@sod/sdk/src/lib/component/modal/modal.component';
 import {sortBy} from 'lodash-es';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -11,7 +12,6 @@ import {productionDragAndDropped} from 'src/app/shared/store/planner/planner.act
 import {ActionAddProductionComponent} from '../../../shared/component/action-add-production/action-add-production.component';
 import {ActionProductionComponent} from '../../../shared/component/action-production/action-production.component';
 import {MissingInputComponent} from '../../../shared/component/missing-input/missing-input.component';
-import {ModalComponent} from '../../../shared/component/modal/modal.component';
 import {ProductionOverviewComponent} from '../../../shared/component/production-overview/production-overview.component';
 import {ProductionComponent} from '../../../shared/component/production/production.component';
 import {Production} from '../../../shared/entities/production';

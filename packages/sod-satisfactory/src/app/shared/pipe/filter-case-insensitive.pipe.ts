@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {SearchService} from 'src/app/shared/service/search-service';
+import {SearchService} from '@sod/sdk/src/lib/service/search-service';
 
 @Pipe({
     name: 'filterCaseInsensitive',

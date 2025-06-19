@@ -1,5 +1,5 @@
 import {Injectable, signal, WritableSignal} from '@angular/core';
-import {onChanges, skipFirst} from 'src/app/shared/function/signal';
+import {onChanges, skipFirst} from '@sod/sdk/src/lib/function/signal';
 import {z, ZodSchema} from 'zod';
 import {JsonService} from './json-service';
 
@@ -54,7 +54,7 @@ export class LocalStorageService {
 
         const safeStoreGet = (): T => {
             const data = unsafeStore.get();
-            if (data !== undefined && validate(data, 'localStorage.getStrictStore().set(...): ')) {
+            if (data !== undefined && validate(data, 'localStorage.getStrictStore().get(...): ')) {
                 return data;
             }
 

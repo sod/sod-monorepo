@@ -1,8 +1,8 @@
+import {updateInArray} from '@sod/sdk/src/lib/function/update-in-array';
 import {ItemPackageDto} from 'src/app/shared/entities/item-package-dto';
 import {ItemParentRelationForItemPackage} from 'src/app/shared/entities/item-parent-relations';
 import {ProductionDto} from 'src/app/shared/entities/production-dto';
 import {Recipe} from 'src/app/shared/entities/recipe';
-import {updateInArray} from 'src/app/shared/function/update-in-array';
 
 export class ItemPackage {
     readonly itemName: string = this.dto.itemName;

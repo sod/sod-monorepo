@@ -1,0 +1,10 @@
+<div class="card my-4" [ngClass]="{'bg-dark-subtle text-dark-emphasis sod-shadow-lg border-0': theme() === 'form'}">
+    <div class="card-body">
+        @if (title(); as title) {
+            <div class="card-title h4">{{ title }}</div>
+        }
+        <div class="card-text">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

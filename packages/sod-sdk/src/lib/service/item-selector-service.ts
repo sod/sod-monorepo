@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {DropdownCommand} from 'src/app/shared/component/dropdown/dropdown.component';
+import {DropdownCommand} from '@sod/sdk/src/lib/component/dropdown/dropdown.component';
 
 @Injectable({providedIn: 'root'})
 export class ItemSelectorService {
