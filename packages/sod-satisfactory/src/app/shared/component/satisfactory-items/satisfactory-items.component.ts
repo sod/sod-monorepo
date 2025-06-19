@@ -1,12 +1,12 @@
 import {AsyncPipe, NgClass} from '@angular/common';
 import {Component, Input} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {AnimatePipe} from '@sod/sdk/src/lib/animate/pipe/animate.pipe';
 import {ItemPackage} from 'src/app/shared/entities/item-package';
 import {RecipeTarget} from 'src/app/shared/entities/recipe-dto';
 import {ProductionInput, ProductionInputs} from 'src/app/shared/pipe/resolve-production.pipe';
 import {GlobalState} from 'src/app/shared/store/global-state';
 import {addProductionWithOutputNameClicked, editProductionClicked} from 'src/app/shared/store/planner/planner.actions';
-import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 import {SatisfactoryItemComponent} from '../satisfactory-item/satisfactory-item.component';
 
 @Component({

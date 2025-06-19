@@ -1,7 +1,7 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, TemplateRef} from '@angular/core';
+import {AnimatePipe} from '@sod/sdk/src/lib/animate/pipe/animate.pipe';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 
 @Component({
     selector: 'app-modal',

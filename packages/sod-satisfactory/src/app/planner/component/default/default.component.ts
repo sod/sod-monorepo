@@ -2,12 +2,12 @@ import {CdkDrag, CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component} from '@angular/core';
 import {Store} from '@ngrx/store';
+import {AnimatePipe} from '@sod/sdk/src/lib/animate/pipe/animate.pipe';
 import {sortBy} from 'lodash-es';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {ProductionsService} from 'src/app/shared/service/productions-service';
 import {productionDragAndDropped} from 'src/app/shared/store/planner/planner.actions';
-import {AnimatePipe} from '../../../animate/pipe/animate.pipe';
 import {ActionAddProductionComponent} from '../../../shared/component/action-add-production/action-add-production.component';
 import {ActionProductionComponent} from '../../../shared/component/action-production/action-production.component';
 import {MissingInputComponent} from '../../../shared/component/missing-input/missing-input.component';
@@ -38,7 +38,7 @@ import {selectInputCovered, selectPlannerEditProduction, selectProductions} from
         ResolveProductionPipe,
         ModalOrInlinePipe,
         AsyncPipe,
-    ]
+    ],
 })
 export class DefaultComponent {
     protected breakpoint = {md: 768} as const;

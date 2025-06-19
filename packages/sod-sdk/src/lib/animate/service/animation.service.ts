@@ -1,8 +1,8 @@
 import {Injectable, IterableDiffer, IterableDiffers} from '@angular/core';
 import {BehaviorSubject, Observable, OperatorFunction, Subject, merge, of, timer} from 'rxjs';
 import {delay, distinctUntilChanged, finalize, map, mapTo, mergeAll, scan, startWith, switchMap} from 'rxjs/operators';
-import {InitialRenderService} from '../../shared/service/initial-render-service';
 import {ScheduleService} from './schedule.service';
+import {InitialRenderService} from '@sod/sdk/src/lib/service/initial-render-service';
 
 /**
  * The AnimationService is meant to replace @angular/animations, to provide a way to
@@ -33,7 +33,10 @@ export class AnimationService {
         let leave: ElevatedRemoved<T>[] = [];
         const remove$ = new Subject<Observable<ElevatedRemoved<T>>>();
         const elevated$ = values$.pipe(map((values) => values?.map((value) => this.elevate(value, true))));
-        const identify = <VALUE, TYPE extends 'next' | 'destroy'>(type: TYPE): OperatorFunction<VALUE, {type: TYPE; value: VALUE}> =>
+        const identify = <VALUE, TYPE extends 'next' | 'destroy'>(type: TYPE): OperatorFunction<VALUE, {
+            type: TYPE;
+            value: VALUE
+        }> =>
             map((value) => ({type, value}));
 
         // if (environment_ssr) {
@@ -85,7 +88,9 @@ export class AnimationService {
         );
     }
 
-    public animate<T>(value$: Observable<T>, options?: {strategy: 'any-change' | 'truthy'}): Observable<ElevatedMixed<T> | undefined> {
+    public animate<T>(value$: Observable<T>, options?: {
+        strategy: 'any-change' | 'truthy'
+    }): Observable<ElevatedMixed<T> | undefined> {
         // if (environment_ssr) {
         //     return value$.pipe(map((value) => (value ? this.elevate(value, true) : undefined)));
         // }
@@ -119,7 +124,9 @@ export class AnimationService {
         );
     }
 
-    public animateSync<T>(value: T, wrapped?: AnimationWrapped<T>, options?: {strategy: 'any-change' | 'truthy'}): AnimationWrapped<T> {
+    public animateSync<T>(value: T, wrapped?: AnimationWrapped<T>, options?: {
+        strategy: 'any-change' | 'truthy'
+    }): AnimationWrapped<T> {
         if (wrapped) {
             wrapped.subject$.next(value);
             return wrapped;
@@ -135,7 +142,8 @@ export class AnimationService {
         private iterableDiffers: IterableDiffers,
         private scheduleService: ScheduleService,
         private initialRenderService: InitialRenderService,
-    ) {}
+    ) {
+    }
 
     private undefined$ = of(undefined);
 
