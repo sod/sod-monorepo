@@ -15,7 +15,7 @@ module.exports = () => {
                 return [file.replace(/scss$/, 'html')];
             }
 
-            return ['./src/**/*.html'];
+            return ['./src/**/*.html', '../sod-sdk/src/**/*.html'];
         },
     });
 
