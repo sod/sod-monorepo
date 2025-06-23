@@ -44,6 +44,16 @@
     }
 </app-panel>
 
+@if (uniqueQueries().length; as length) {
+    <app-panel [title]="'Filter'">
+        <select class="form-select" multiple [size]="length" [(ngModel)]="selectedQueries">
+            @for (query of uniqueQueries(); track query) {
+                <option [value]="query">{{ query }}</option>
+            }
+        </select>
+    </app-panel>
+}
+
 <app-panel [title]="'Relics'">
     @let item = editRelic();
 
@@ -68,7 +78,7 @@
                 <app-edit-relic [relic]="relic" (save)="saveRelic($event)" (delete)="deleteRelic($event.uuid)" />
             </app-panel>
         } @else {
-            <app-relic [relic]="relic" (edit)="editRelic.set(relic)" [highlight]="activeViewOrEditView()" />
+            <app-relic [relic]="relic" (edit)="editRelic.set(relic)" [highlight]="selectedQueriesOrDefault()" />
         }
     }
 </app-panel>

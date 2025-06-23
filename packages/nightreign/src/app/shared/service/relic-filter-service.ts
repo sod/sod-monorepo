@@ -1,6 +1,5 @@
 import {inject, Injectable} from '@angular/core';
 import {RelicsStore} from '@sod/nightreign/src/app/shared/dto/relic-dto';
-import {RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
 import {SearchService} from '@sod/sdk/src/lib/service/search-service';
 
 const escapeRegex = (value: string) => (RegExp as any).escape(value);
@@ -9,9 +8,8 @@ const escapeRegex = (value: string) => (RegExp as any).escape(value);
 export class RelicFilterService {
     searchService = inject(SearchService);
 
-    filter(relics: RelicsStore, relicView: RelicViewDto): RelicsStore {
-        const search = relicView.queries.map((query) => (haystack: string[]) => this.searchService.search(query, haystack));
-        const count = relicView.count;
+    filter(relics: RelicsStore, queries: string[], count: number): RelicsStore {
+        const search = queries.map((query) => (haystack: string[]) => this.searchService.search(query, haystack));
 
         return relics.filter((relic) => {
             return new Set(search.flatMap((inner) => inner(relic.properties))).size >= count;

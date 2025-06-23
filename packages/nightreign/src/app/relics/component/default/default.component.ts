@@ -33,11 +33,21 @@ export class DefaultComponent {
 
         return activeView;
     });
+    uniqueQueries = computed(() => {
+        return Array.from(this.activeViewOrEditView()?.queries ?? []);
+    });
+    selectedQueries = signal<string[]>([]);
+    selectedQueriesOrDefault = computed(() =>
+        this.selectedQueries().length ? this.selectedQueries() : (this.activeViewOrEditView()?.queries ?? []),
+    );
+
     relics = computed(() => {
         const relics = this.relicsService.relics();
         const activeView = this.activeViewOrEditView();
 
-        return activeView?.queries.length ? this.relicFilterService.filter(relics, activeView) : relics;
+        return activeView?.queries.length
+            ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault(), activeView.count)
+            : relics;
     });
 
     createNewRelic = createNewRelic;

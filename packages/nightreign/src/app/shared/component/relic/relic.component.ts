@@ -1,6 +1,5 @@
 import {Component, computed, inject, input, output} from '@angular/core';
 import {RelicColorDto, RelicDto} from '@sod/nightreign/src/app/shared/dto/relic-dto';
-import {RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
 import {RelicFilterService} from '@sod/nightreign/src/app/shared/service/relic-filter-service';
 
 @Component({
@@ -10,14 +9,13 @@ import {RelicFilterService} from '@sod/nightreign/src/app/shared/service/relic-f
 })
 export class RelicComponent {
     relic = input.required<RelicDto>();
-    highlight = input<RelicViewDto>();
+    highlight = input<string[]>();
     edit = output<RelicDto>();
     relicFilterService = inject(RelicFilterService);
 
     properties = computed(() => {
         const properties = this.relic().properties;
-        const highlight = this.highlight();
-        const highlighter = this.relicFilterService.highlight(highlight?.queries);
+        const highlighter = this.relicFilterService.highlight(this.highlight());
 
         return properties.map(highlighter);
     });
