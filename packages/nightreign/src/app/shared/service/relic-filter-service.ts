@@ -21,8 +21,7 @@ export class RelicFilterService {
             return (value: string) => [{value, class: ''}];
         }
 
-        const needlesByWord = Array.from(new Set(needles.flatMap((needle) => needle.toLowerCase().trim().split(/ +/))));
-        const needlesRegex = new RegExp(`(${needlesByWord.map((word) => escapeRegex(word)).join('|')})\\s*`, 'ig');
+        const needlesRegex = new RegExp(`(${needles.map((needle) => escapeRegex(needle)).join('|')})\\s*`, 'ig');
 
         return (haystack: string) => {
             let head: {value: string; class: string} | undefined = undefined;
