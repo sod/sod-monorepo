@@ -1,5 +1,5 @@
 import {JsonPipe, NgTemplateOutlet} from '@angular/common';
-import {Component, ElementRef, TemplateRef, computed, inject, input, model, signal, viewChild} from '@angular/core';
+import {Component, computed, ElementRef, inject, input, model, output, signal, TemplateRef, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DropdownCommand, DropdownComponent} from '@sod/sdk/src/lib/component/dropdown/dropdown.component';
 import {InputComponent} from '@sod/sdk/src/lib/component/input/input.component';
@@ -29,6 +29,8 @@ export class AutosuggestComponent<T> {
 
     needle = signal<string | undefined>(undefined);
     suggestions = computed(() => this.search(20));
+
+    keyboardEnter = output<void>();
 
     timeout?: number = undefined;
 
@@ -82,6 +84,7 @@ export class AutosuggestComponent<T> {
         if (command === 'submit') {
             this.inputElement().nativeElement.blur();
             this.close();
+            this.keyboardEnter.emit();
             return;
         }
 

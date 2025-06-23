@@ -3,6 +3,7 @@
         <input
             #element
             appInputControl
+            data-cy="autosuggest"
             type="search"
             [ngModel]="model()"
             (input)="input(element.value)"

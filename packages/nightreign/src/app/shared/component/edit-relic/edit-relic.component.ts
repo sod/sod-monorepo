@@ -38,4 +38,12 @@ export class EditRelicComponent {
         this.relic.set(relic);
         this.save.emit(relic);
     }
+
+    next(index: number) {
+        if (index === 3) {
+            document.querySelector<HTMLInputElement>('[data-cy="save-relic"]')?.focus();
+        } else {
+            document.querySelectorAll<HTMLInputElement>('[data-cy="autosuggest"]')[index]?.focus();
+        }
+    }
 }
