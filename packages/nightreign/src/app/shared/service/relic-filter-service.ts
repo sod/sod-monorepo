@@ -3,6 +3,8 @@ import {RelicsStore} from '@sod/nightreign/src/app/shared/dto/relic-dto';
 import {RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
 import {SearchService} from '@sod/sdk/src/lib/service/search-service';
 
+const escapeRegex = (value: string) => (RegExp as any).escape(value);
+
 @Injectable({providedIn: 'root'})
 export class RelicFilterService {
     searchService = inject(SearchService);
@@ -14,5 +16,43 @@ export class RelicFilterService {
         return relics.filter((relic) => {
             return new Set(search.flatMap((inner) => inner(relic.properties))).size >= count;
         });
+    }
+
+    highlight(needles?: string[]): (haystack: string) => {value: string; class: string}[] {
+        if (!needles?.length) {
+            return (value: string) => [{value, class: ''}];
+        }
+
+        const needlesByWord = Array.from(new Set(needles.flatMap((needle) => needle.toLowerCase().trim().split(/ +/))));
+        const needlesRegex = new RegExp(`(${needlesByWord.map((word) => escapeRegex(word)).join('|')})\\s*`, 'ig');
+
+        return (haystack: string) => {
+            let head: {value: string; class: string} | undefined = undefined;
+            const stack: {value: string; class: string}[] = [];
+            const consume = (value: string, css: string) => {
+                if (head && head.class === css) {
+                    head.value += value;
+                } else {
+                    stack.push((head = {value, class: css}));
+                }
+            };
+            let next;
+            let pos = 0;
+
+            while ((next = needlesRegex.exec(haystack))) {
+                if (next.index > pos) {
+                    consume(haystack.slice(pos, next.index), 'text-gray-600');
+                }
+
+                consume(next[0], 'text-white');
+                pos = next.index + next[0].length;
+            }
+
+            if (pos < haystack.length) {
+                consume(haystack.slice(pos, haystack.length), 'text-gray-600');
+            }
+
+            return stack;
+        };
     }
 }

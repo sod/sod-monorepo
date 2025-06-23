@@ -1,8 +1,7 @@
-import {Component, computed, input, output} from '@angular/core';
+import {Component, computed, inject, input, output} from '@angular/core';
 import {RelicColorDto, RelicDto} from '@sod/nightreign/src/app/shared/dto/relic-dto';
 import {RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
-
-const escapeRegex = (value: string) => (RegExp as any).escape(value);
+import {RelicFilterService} from '@sod/nightreign/src/app/shared/service/relic-filter-service';
 
 @Component({
     selector: 'app-relic',
@@ -13,43 +12,14 @@ export class RelicComponent {
     relic = input.required<RelicDto>();
     highlight = input<RelicViewDto>();
     edit = output<RelicDto>();
+    relicFilterService = inject(RelicFilterService);
 
     properties = computed(() => {
         const properties = this.relic().properties;
         const highlight = this.highlight();
+        const highlighter = this.relicFilterService.highlight(highlight?.queries);
 
-        if (!highlight?.queries.length) {
-            return properties.map((value) => [{value, class: ''}]);
-        }
-
-        const queries = highlight?.queries.map((query) => query.trim().split(/ +/)) ?? [];
-
-        return properties.map((value) => {
-            const match = queries.find((needles) => needles!.every((needle) => value.toLowerCase().indexOf(needle.toLowerCase()) !== -1));
-
-            if (match) {
-                const rx = new RegExp(`(${match.map((inner) => escapeRegex(inner)).join('|')})`, 'ig');
-                const stack = [];
-                let next;
-                let pos = 0;
-
-                while ((next = rx.exec(value))) {
-                    if (next.index > pos) {
-                        stack.push({value: value.slice(pos, next.index), class: 'text-gray-600'});
-                    }
-                    stack.push({value: next[0], class: 'text-white'});
-                    pos = next.index + next[0].length;
-                }
-
-                if (pos < value.length) {
-                    stack.push({value: value.slice(pos, value.length), class: 'text-gray-600'});
-                }
-
-                return stack;
-            }
-
-            return [{value, class: 'text-gray-600'}];
-        });
+        return properties.map(highlighter);
     });
 
     colorAsCss = {
