@@ -6,14 +6,16 @@ import {createNewRelic, RelicDto} from '@sod/nightreign/src/app/shared/dto/relic
 import {createNewRelicView, RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
 import {RelicFilterService} from '@sod/nightreign/src/app/shared/service/relic-filter-service';
 import {RelicsService} from '@sod/nightreign/src/app/shared/service/relics-service';
+import {InputComponent} from '@sod/sdk/src/lib/component/input/input.component';
 import {PanelComponent} from '@sod/sdk/src/lib/component/panel/panel.component';
+import {InputControlDirective} from '@sod/sdk/src/lib/directive/input-control.directive';
 import {RelicComponent} from 'src/app/shared/component/relic/relic.component';
 
 @Component({
     selector: 'app-default',
     templateUrl: './default.component.html',
     styleUrls: ['./default.component.scss'],
-    imports: [RelicComponent, EditRelicComponent, PanelComponent, FormsModule, EditViewComponent],
+    imports: [RelicComponent, EditRelicComponent, PanelComponent, FormsModule, EditViewComponent, InputComponent, InputControlDirective],
 })
 export class DefaultComponent {
     relicsService = inject(RelicsService);
@@ -33,6 +35,7 @@ export class DefaultComponent {
 
         return activeView;
     });
+    count = model(1);
     uniqueQueries = computed(() => {
         return Array.from(this.activeViewOrEditView()?.queries ?? []);
     });
@@ -45,9 +48,7 @@ export class DefaultComponent {
         const relics = this.relicsService.relics();
         const activeView = this.activeViewOrEditView();
 
-        return activeView?.queries.length
-            ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault(), activeView.count)
-            : relics;
+        return activeView?.queries.length ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault(), this.count()) : relics;
     });
 
     createNewRelic = createNewRelic;
