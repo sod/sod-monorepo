@@ -14,6 +14,7 @@ import {SearchService} from '@sod/sdk/src/lib/service/search-service';
     styleUrl: './autosuggest.component.scss',
 })
 export class AutosuggestComponent<T> {
+    limit = 50;
     label = input.required<string>();
     model = model.required<T | undefined>();
     items = input.required<readonly T[]>();
@@ -28,7 +29,7 @@ export class AutosuggestComponent<T> {
     elementRef = inject(ElementRef);
 
     needle = signal<string | undefined>(undefined);
-    suggestions = computed(() => this.search(20));
+    suggestions = computed(() => this.search(this.limit));
 
     keyboardEnter = output<void>();
 
