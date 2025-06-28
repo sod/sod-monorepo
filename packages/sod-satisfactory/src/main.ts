@@ -1,4 +1,4 @@
-import {enableProdMode, importProvidersFrom, provideExperimentalZonelessChangeDetection} from '@angular/core';
+import {enableProdMode, importProvidersFrom, provideZonelessChangeDetection} from '@angular/core';
 
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -54,7 +54,7 @@ bootstrapApplication(AppComponent, {
             StoreModule.forFeature(fromApp.appFeatureKey, fromApp.reducer),
             environment.devtools,
         ),
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
         provideHttpClient(withInterceptorsFromDi()),
     ],
 }).catch((err) => console.error(err));

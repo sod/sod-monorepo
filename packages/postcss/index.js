@@ -1,4 +1,4 @@
-const purgecss = require('@fullhuman/postcss-purgecss');
+const {purgeCSSPlugin} = require('@fullhuman/postcss-purgecss');
 const {conditionalPlugin} = require('./conditional-plugin');
 
 /**
@@ -7,7 +7,7 @@ const {conditionalPlugin} = require('./conditional-plugin');
 module.exports = () => {
     const production = process.env.POSTCSS_ENV !== 'dev';
     const purgeIgnore = production ? undefined : /styles\.scss$/;
-    const purgeCssPlugin = purgecss({
+    const instance = purgeCSSPlugin({
         safelist: ['form-control', 'form-floating'],
         skippedContentGlobs: ['node_modules/**'],
         contentFunction: (file) => {
@@ -20,7 +20,7 @@ module.exports = () => {
     });
 
     return {
-        plugins: [conditionalPlugin((file) => !purgeIgnore?.test(file), purgeCssPlugin)],
+        plugins: [conditionalPlugin((file) => !purgeIgnore?.test(file), instance)],
     };
 };
 

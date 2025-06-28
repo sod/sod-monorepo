@@ -1,4 +1,4 @@
-import {ZodType} from 'zod/lib/types';
+import {ZodType} from 'zod';
 
 export function validateSchema<T extends unknown>(name: string, schema: ZodType, data: T): T | undefined {
     try {
