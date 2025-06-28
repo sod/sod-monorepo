@@ -369,7 +369,6 @@ export const relicProperties = [
     'Vigor +3',
     'Wraith Calling Bell in possession at start of expedition',
     'Wylder: +1 additional Character Skill use',
-    'Wylder: +1 additional Character Skill use',
     'Wylder: Art activation spreads fire in area',
     'Wylder: Art gauge greatly filled when ability is activated',
     'Wylder: Art gauge greatly filled when ability is activated (Silver Tear)',

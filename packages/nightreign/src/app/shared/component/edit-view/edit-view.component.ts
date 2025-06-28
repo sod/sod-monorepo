@@ -31,6 +31,11 @@ export class EditViewComponent {
     delete = output<RelicViewDto>();
 
     constructor() {
+        // const form = new FormGroup({
+        //     name: new FormControl(''),
+        //     queries: new FormArray([new FormControl('')]),
+        // });
+
         signalSync(() => this.toRelicViewDto(), this.liveUpdate);
     }
 
