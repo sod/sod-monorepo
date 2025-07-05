@@ -2,63 +2,183 @@ import {groupBy, mapValues} from 'lodash-es';
 
 export const relicImages = [
     {
-        src: '/assets/relic/grand-burning-scene.webp',
-        alt: 'Grand Burning Scene',
+        src: '/assets/relic2/19108.webp',
+        alt: 'Grand Burning Scene 1',
         color: 'red',
     },
     {
-        src: '/assets/relic/grand-drizzly-scene.webp',
-        alt: 'Grand Drizzly Scene',
+        src: '/assets/relic2/19120.webp',
+        alt: 'Grand Burning Scene 2',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19132.webp',
+        alt: 'Grand Burning Scene 3',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19109.webp',
+        alt: 'Grand Drizzly Scene 1',
         color: 'blue',
     },
     {
-        src: '/assets/relic/grand-luminous-scene.webp',
-        alt: 'Grand Luminous Scene',
+        src: '/assets/relic2/19121.webp',
+        alt: 'Grand Drizzly Scene 2',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19133.webp',
+        alt: 'Grand Drizzly Scene 3',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19110.webp',
+        alt: 'Grand Luminous Scene 1',
         color: 'yellow',
     },
     {
-        src: '/assets/relic/grand-tranquil-scene.webp',
-        alt: 'Grand Tranquil Scene',
+        src: '/assets/relic2/19122.webp',
+        alt: 'Grand Luminous Scene 2',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19134.webp',
+        alt: 'Grand Luminous Scene 3',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19111.webp',
+        alt: 'Grand Tranquil Scene 1',
         color: 'green',
     },
     {
-        src: '/assets/relic/polished-burning-scene.webp',
-        alt: 'Polished Burning Scene',
-        color: 'red',
-    },
-    {
-        src: '/assets/relic/polished-drizzly-scene.webp',
-        alt: 'Polished Drizzly Scene',
-        color: 'blue',
-    },
-    {
-        src: '/assets/relic/polished-luminous-scene.webp',
-        alt: 'Polished Luminous Scene',
-        color: 'yellow',
-    },
-    {
-        src: '/assets/relic/polished-tranquil-scene.webp',
-        alt: 'Polished Tranquil Scene',
+        src: '/assets/relic2/19123.webp',
+        alt: 'Grand Tranquil Scene 2',
         color: 'green',
     },
     {
-        src: '/assets/relic/delicate-burning-scene.webp',
-        alt: 'Delicate Burning Scene',
+        src: '/assets/relic2/19135.webp',
+        alt: 'Grand Tranquil Scene 3',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19104.webp',
+        alt: 'Polished Burning Scene 1',
         color: 'red',
     },
     {
-        src: '/assets/relic/delicate-drizzly-scene.webp',
-        alt: 'Delicate Drizzly Scene',
+        src: '/assets/relic2/19116.webp',
+        alt: 'Polished Burning Scene 2',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19128.webp',
+        alt: 'Polished Burning Scene 3',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19105.webp',
+        alt: 'Polished Drizzly Scene 1',
         color: 'blue',
     },
     {
-        src: '/assets/relic/delicate-luminous-scene.webp',
-        alt: 'Delicate Luminous Scene',
+        src: '/assets/relic2/19117.webp',
+        alt: 'Polished Drizzly Scene 2',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19129.webp',
+        alt: 'Polished Drizzly Scene 3',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19106.webp',
+        alt: 'Polished Luminous Scene 1',
         color: 'yellow',
     },
     {
-        src: '/assets/relic/delicate-tranquil-scene.webp',
-        alt: 'Delicate Tranquil Scene',
+        src: '/assets/relic2/19118.webp',
+        alt: 'Polished Luminous Scene 2',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19130.webp',
+        alt: 'Polished Luminous Scene 3',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19107.webp',
+        alt: 'Polished Tranquil Scene 1',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19119.webp',
+        alt: 'Polished Tranquil Scene 2',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19131.webp',
+        alt: 'Polished Tranquil Scene 3',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19100.webp',
+        alt: 'Delicate Burning Scene 1',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19112.webp',
+        alt: 'Delicate Burning Scene 2',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19124.webp',
+        alt: 'Delicate Burning Scene 3',
+        color: 'red',
+    },
+    {
+        src: '/assets/relic2/19101.webp',
+        alt: 'Delicate Drizzly Scene 1',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19113.webp',
+        alt: 'Delicate Drizzly Scene 2',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19125.webp',
+        alt: 'Delicate Drizzly Scene 3',
+        color: 'blue',
+    },
+    {
+        src: '/assets/relic2/19102.webp',
+        alt: 'Delicate Luminous Scene 1',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19114.webp',
+        alt: 'Delicate Luminous Scene 2',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19126.webp',
+        alt: 'Delicate Luminous Scene 3',
+        color: 'yellow',
+    },
+    {
+        src: '/assets/relic2/19103.webp',
+        alt: 'Delicate Tranquil Scene 1',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19115.webp',
+        alt: 'Delicate Tranquil Scene 2',
+        color: 'green',
+    },
+    {
+        src: '/assets/relic2/19127.webp',
+        alt: 'Delicate Tranquil Scene 3',
         color: 'green',
     },
     {
