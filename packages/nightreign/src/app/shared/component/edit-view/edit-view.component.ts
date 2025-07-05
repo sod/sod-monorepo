@@ -18,7 +18,6 @@ import {getNewUuid} from '@sod/sdk/src/lib/function/uuid';
 export class EditViewComponent {
     view = model.required<RelicViewDto>();
     name = linkedSignal(() => this.view().name);
-    count = linkedSignal(() => this.view().count);
     queriesAmount = linkedSignal(() => this.view().queries.length + 1);
     queries = linkedSignal(() => {
         return Array(this.queriesAmount())
@@ -43,7 +42,6 @@ export class EditViewComponent {
         return {
             uuid: this.view().uuid ?? getNewUuid(),
             name: this.name(),
-            count: this.count(),
             queries: this.getValidQueries(),
         };
     }

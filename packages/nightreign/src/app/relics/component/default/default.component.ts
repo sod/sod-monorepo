@@ -21,32 +21,33 @@ export class DefaultComponent {
     relicsService = inject(RelicsService);
     relicFilterService = inject(RelicFilterService);
 
-    editRelic = model<RelicDto | undefined>(undefined);
-    editRelicView = model<RelicViewDto | undefined>(undefined);
-    editRelicViewChanges = signal<RelicViewDto | undefined>(undefined);
+    view = this.relicsService.activeView;
+    editView = computed(() => (this.relicsService.activeViewEdit() ? this.view() : undefined));
 
-    activeViewOrEditView = computed(() => {
-        const editRelicView = this.editRelicViewChanges() ?? this.editRelicView();
-        const activeView = this.relicsService.activeView();
-
-        if (editRelicView && editRelicView?.uuid === activeView?.uuid) {
-            return editRelicView;
+    select({uuid, edit = false}: {uuid?: string; edit?: boolean}) {
+        if (!uuid) {
+            const newView = createNewRelicView();
+            this.relicsService.updateRelicView(newView);
+            uuid = newView.uuid;
         }
 
-        return activeView;
-    });
+        this.relicsService.activeViewUuid.set(uuid);
+        this.relicsService.activeViewEdit.set(edit);
+    }
+
+    editRelic = model<RelicDto | undefined>(undefined);
+    editRelicViewChanges = signal<RelicViewDto | undefined>(undefined);
+
     count = model(1);
     uniqueQueries = computed(() => {
-        return Array.from(this.activeViewOrEditView()?.queries ?? []);
+        return Array.from(this.view()?.queries ?? []);
     });
     selectedQueries = signal<string[]>([]);
-    selectedQueriesOrDefault = computed(() =>
-        this.selectedQueries().length ? this.selectedQueries() : (this.activeViewOrEditView()?.queries ?? []),
-    );
+    selectedQueriesOrDefault = computed(() => (this.selectedQueries().length ? this.selectedQueries() : (this.view()?.queries ?? [])));
 
     relics = computed(() => {
         const relics = this.relicsService.relics();
-        const activeView = this.activeViewOrEditView();
+        const activeView = this.view();
 
         return activeView?.queries.length ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault(), this.count()) : relics;
     });
@@ -66,13 +67,13 @@ export class DefaultComponent {
 
     saveRelicView(relic: RelicViewDto) {
         this.relicsService.updateRelicView(relic);
-        this.editRelicView.set(undefined);
+        this.relicsService.activeViewEdit.set(false);
         this.editRelicViewChanges.set(undefined);
     }
 
     deleteRelicView(uuid: string) {
         this.relicsService.deleteRelicView(uuid);
-        this.editRelicView.set(undefined);
+        this.relicsService.activeViewEdit.set(false);
         this.editRelicViewChanges.set(undefined);
     }
 }

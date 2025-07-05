@@ -1,4 +1,4 @@
-import {computed, inject, Injectable} from '@angular/core';
+import {computed, inject, Injectable, signal} from '@angular/core';
 import {RelicDto, RelicsStoreSchema} from '@sod/nightreign/src/app/shared/dto/relic-dto';
 import {RelicsViewStoreSchema, RelicViewDto} from '@sod/nightreign/src/app/shared/dto/relic-view-dto';
 import {deleteByUuid} from '@sod/sdk/src/lib/function/delete-by-uuid';
@@ -15,6 +15,7 @@ export class RelicsService {
     public readonly views = this.localStorageService.getStrictStore('views', RelicsViewStoreSchema, () => []);
     public readonly activeViewUuid = this.localStorageService.getStrictStore('activeViewUuid', z.string(), () => '');
     public readonly activeView = computed(() => this.views().find((view) => view.uuid === this.activeViewUuid()));
+    public readonly activeViewEdit = signal<boolean>(false);
 
     updateRelic(relic: Partial<RelicDto>) {
         updateByUuid({...relic, uuid: relic?.uuid ?? getNewUuid()}, this.relics, 'prepend');

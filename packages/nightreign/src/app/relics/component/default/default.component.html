@@ -3,7 +3,7 @@
 <p>This page lets you list and find your relics</p>
 
 <app-panel [title]="'Views'">
-    <button class="btn btn-outline-secondary mb-3" (click)="editRelicView.set(createNewRelicView())">
+    <button class="btn btn-outline-secondary mb-3" (click)="select({edit: true, uuid: undefined})">
         <i class="bi bi-plus"></i>
         Add View ...
     </button>
@@ -23,18 +23,14 @@
             />
             <label class="form-check-label" [for]="relicView.uuid">
                 {{ relicView.name }}
-                <button
-                    class="ml-4 btn btn-link p-0 ms-2 edit-button"
-                    type="button"
-                    (click)="editRelicView.set(relicView); relicsService.activeViewUuid.set(relicView.uuid)"
-                >
+                <button class="ml-4 btn btn-link p-0 ms-2 edit-button" type="button" (click)="select({edit: true, uuid: relicView.uuid})">
                     Edit
                 </button>
             </label>
         </div>
     }
 
-    @if (editRelicView(); as view) {
+    @if (editView(); as view) {
         <app-edit-view
             [view]="view"
             (liveUpdate)="editRelicViewChanges.set($event)"
