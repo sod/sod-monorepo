@@ -9,6 +9,7 @@ export const RelicPropertyDtoSchema = z.string();
 export const RelicDtoSchema = z.object({
     uuid: z.string(),
     color: RelicColorDtoSchema,
+    image: z.string().optional(),
     properties: z.array(RelicPropertyDtoSchema),
 });
 

@@ -1,15 +1,20 @@
 <!-- text-white text-gray-600 text-muted -->
-<div class="d-flex align-items-center mb-0 overflow-hidden">
+<div class="d-flex align-items-center mb-0 overflow-hidden text-muted">
     <div class="color rounded-4" [style.background-color]="colorAsCss[relic().color!]"></div>
-    <div class="text-capitalize ms-2">{{ relic().color }}</div>
+    <div class="text-capitalize ms-2">{{ relic().color }} {{ relic().image ?? '' }}</div>
     <button class="ml-4 btn btn-link p-0 ms-2 edit-button" type="button" (click)="edit.emit(relic())">Edit</button>
 </div>
-<ol>
-    @for (prop of properties(); track $index) {
-        <li>
-            @for (chunk of prop; track $index) {
-                <span [attr.class]="chunk.class">{{ chunk.value }}</span>
-            }
-        </li>
-    }
-</ol>
+<div class="d-flex">
+    <div class="flex-shrink-1">
+        <img [src]="relic().image | relicImage" [alt]="relic().image" width="65" height="65" class="me-2" />
+    </div>
+    <ol class="list-unstyled flex-grow-1">
+        @for (prop of properties(); track $index) {
+            <li>
+                @for (chunk of prop; track $index) {
+                    <span [attr.class]="chunk.class">{{ chunk.value }}</span>
+                }
+            </li>
+        }
+    </ol>
+</div>

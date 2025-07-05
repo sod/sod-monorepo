@@ -1,11 +1,13 @@
 import {Component, computed, inject, input, output} from '@angular/core';
 import {RelicColorDto, RelicDto} from '@sod/nightreign/src/app/shared/dto/relic-dto';
+import {RelicImagePipe} from '@sod/nightreign/src/app/shared/pipe/relic-image.pipe';
 import {RelicFilterService} from '@sod/nightreign/src/app/shared/service/relic-filter-service';
 
 @Component({
     selector: 'app-relic',
     templateUrl: './relic.component.html',
     styleUrl: './relic.component.scss',
+    imports: [RelicImagePipe],
 })
 export class RelicComponent {
     relic = input.required<RelicDto>();

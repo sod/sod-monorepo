@@ -1,0 +1,18 @@
+label img {
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+    input:checked + & {
+        box-shadow: 0 0 7px 1px white inset;
+    }
+
+    &:hover {
+        box-shadow: 0 0 2px 1px white;
+    }
+
+    input:checked + &:hover {
+        box-shadow:
+            0 0 7px 1px white inset,
+            0 0 2px 1px white;
+    }
+}

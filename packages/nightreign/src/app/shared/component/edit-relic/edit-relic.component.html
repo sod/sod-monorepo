@@ -1,5 +1,15 @@
 <div class="bg-dark-subtle text-dark-emphasis rounded-3 sod-shadow p-2 pb-2">
     <app-relic-color [(color)]="color" class="mb-2 d-block" />
+    <div>
+        @for (img of relicImages(); track $index) {
+            <input [id]="'radio' + $index" type="radio" [(ngModel)]="relicImage" [value]="img.alt" class="visually-hidden" />
+            <label [for]="'radio' + $index" class="me-1 d-inline-block">
+                <img [src]="img.src | relicImage" [alt]="img.alt" width="65" height="65" />
+            </label>
+        }
+    </div>
+    <div class="mb-2">{{ relicImage() ?? 'Properties' }}</div>
+
     @for (property of properties; track property) {
         <app-autosuggest
             [label]="`Property ${$index + 1}`"

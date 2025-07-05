@@ -1,14 +1,16 @@
-import {Component, linkedSignal, model, output, WritableSignal} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {Component, computed, linkedSignal, model, output, WritableSignal} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RelicColorComponent} from '@sod/nightreign/src/app/shared/component/relic-color/relic-color.component';
+import {relicImagesByColor} from '@sod/nightreign/src/app/shared/dto/images';
 import {RelicDto} from '@sod/nightreign/src/app/shared/dto/relic-dto';
 import {relicProperties} from '@sod/nightreign/src/app/shared/dto/relic-properties';
+import {RelicImagePipe} from '@sod/nightreign/src/app/shared/pipe/relic-image.pipe';
 import {AutosuggestComponent} from '@sod/sdk/src/lib/component/autosuggest/autosuggest.component';
 import {getNewUuid} from '@sod/sdk/src/lib/function/uuid';
 
 @Component({
     selector: 'app-edit-relic',
-    imports: [ReactiveFormsModule, AutosuggestComponent, RelicColorComponent],
+    imports: [ReactiveFormsModule, AutosuggestComponent, RelicColorComponent, RelicImagePipe, FormsModule],
     templateUrl: './edit-relic.component.html',
     styleUrl: './edit-relic.component.scss',
 })
@@ -21,6 +23,8 @@ export class EditRelicComponent {
     properties: WritableSignal<RelicDto['properties'][number]>[] = [0, 1, 2].map((index) =>
         linkedSignal(() => this.relic().properties[index]),
     );
+    relicImages = computed(() => relicImagesByColor[this.color()] ?? []);
+    relicImage = linkedSignal<RelicDto['image']>(() => this.relic().image);
 
     relicProperties = relicProperties;
 
@@ -28,6 +32,7 @@ export class EditRelicComponent {
         return {
             uuid: this.relic().uuid ?? getNewUuid(),
             color: this.color(),
+            image: this.relicImage(),
             properties: this.properties.map((prop) => prop()).filter(Boolean),
         };
     }
