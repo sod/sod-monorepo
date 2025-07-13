@@ -1,19 +1,16 @@
-import {inject, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {RelicsStore} from '@sod/nightreign/src/app/shared/dto/relic-dto';
-import {SearchService} from '@sod/sdk/src/lib/service/search-service';
 
 const escapeRegex = (value: string) => (RegExp as any).escape(value);
 
 @Injectable({providedIn: 'root'})
 export class RelicFilterService {
-    searchService = inject(SearchService);
-
     filter(relics: RelicsStore, queries: string[]): RelicsStore {
-        const search = queries.map((query) => (haystack: string[]) => this.searchService.search(query, haystack));
+        const searchRx = this.getSearchRx(queries);
         const matches: RelicsStore[] = [];
 
         for (const relic of relics) {
-            const count = new Set(search.flatMap((inner) => inner(relic.properties))).size;
+            const count = relic.properties.filter((prop) => searchRx.test(prop)).length;
 
             if (!count) {
                 continue;
@@ -29,12 +26,22 @@ export class RelicFilterService {
         return matches.reverse().flat();
     }
 
+    getSearchRx(needles: string[]) {
+        return new RegExp(
+            `(${needles
+                .filter(Boolean)
+                .map((needle) => escapeRegex(needle))
+                .join('|')})\\s*`,
+            'ig',
+        );
+    }
+
     highlight(needles?: string[]): (haystack: string) => {value: string; class: string}[] {
         if (!needles?.length) {
             return (value: string) => [{value, class: ''}];
         }
 
-        const needlesRegex = new RegExp(`(${needles.map((needle) => escapeRegex(needle)).join('|')})\\s*`, 'ig');
+        const needlesRegex = this.getSearchRx(needles);
 
         return (haystack: string) => {
             let head: {value: string; class: string} | undefined = undefined;
