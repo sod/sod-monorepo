@@ -6,11 +6,12 @@ const escapeRegex = (value: string) => (RegExp as any).escape(value);
 @Injectable({providedIn: 'root'})
 export class RelicFilterService {
     filter(relics: RelicsStore, queries: string[]): RelicsStore {
-        const searchRx = this.getSearchRx(queries);
+        const searchRx = this.getSearchRx(queries, 'i');
         const matches: RelicsStore[] = [];
 
         for (const relic of relics) {
-            const count = relic.properties.filter((prop) => searchRx.test(prop)).length;
+            const matchedProperties = relic.properties.filter((prop) => searchRx.test(prop));
+            const count = matchedProperties.length;
 
             if (!count) {
                 continue;
@@ -26,13 +27,13 @@ export class RelicFilterService {
         return matches.reverse().flat();
     }
 
-    getSearchRx(needles: string[]) {
+    getSearchRx(needles: string[], flags: 'i' | 'g' | 'ig') {
         return new RegExp(
             `(${needles
                 .filter(Boolean)
                 .map((needle) => escapeRegex(needle))
                 .join('|')})\\s*`,
-            'ig',
+            flags,
         );
     }
 
@@ -41,7 +42,7 @@ export class RelicFilterService {
             return (value: string) => [{value, class: ''}];
         }
 
-        const needlesRegex = this.getSearchRx(needles);
+        const needlesRegex = this.getSearchRx(needles, 'ig');
 
         return (haystack: string) => {
             let head: {value: string; class: string} | undefined = undefined;
