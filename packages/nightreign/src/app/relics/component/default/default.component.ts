@@ -40,7 +40,7 @@ export class DefaultComponent {
 
     count = model(1);
     uniqueQueries = computed(() => {
-        return Array.from(this.view()?.queries ?? []);
+        return this.view()?.queries ?? [];
     });
     selectedQueries = signal<string[]>([]);
     selectedQueriesOrDefault = computed(() => (this.selectedQueries().length ? this.selectedQueries() : (this.view()?.queries ?? [])));

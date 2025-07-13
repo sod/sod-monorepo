@@ -1,0 +1,15 @@
+.cursor-draggable {
+    cursor: grab;
+}
+
+/* purgecss start ignore */
+
+.cdk-drag-placeholder {
+    opacity: .2;
+}
+
+.cdk-drop-list-dragging > * {
+    transition: transform 0.15s ease-out;
+}
+
+/* purgecss end ignore */

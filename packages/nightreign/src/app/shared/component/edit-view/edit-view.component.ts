@@ -1,3 +1,4 @@
+import {CdkDrag, CdkDragDrop, CdkDragHandle, CdkDropList, moveItemInArray} from '@angular/cdk/drag-drop';
 import {Component, linkedSignal, model, output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {relicProperties} from '@sod/nightreign/src/app/shared/dto/relic-properties';
@@ -11,54 +12,63 @@ import {getNewUuid} from '@sod/sdk/src/lib/function/uuid';
 
 @Component({
     selector: 'app-edit-view',
-    imports: [InputComponent, InputControlDirective, FormsModule, PanelComponent, AutosuggestComponent],
+    imports: [
+        InputComponent,
+        InputControlDirective,
+        FormsModule,
+        PanelComponent,
+        AutosuggestComponent,
+        CdkDropList,
+        CdkDragHandle,
+        CdkDrag,
+    ],
     templateUrl: './edit-view.component.html',
     styleUrl: './edit-view.component.scss',
 })
 export class EditViewComponent {
     view = model.required<RelicViewDto>();
     name = linkedSignal(() => this.view().name);
-    queriesAmount = linkedSignal(() => this.view().queries.length + 1);
-    queries = linkedSignal(() => {
-        return Array(this.queriesAmount())
-            .fill(0, 0, this.queriesAmount())
-            .map((_, index) => linkedSignal(() => this.view().queries[index] ?? ''));
-    });
+    queries = linkedSignal(() => [...(this.view().queries ?? []), '']);
 
     liveUpdate = output<RelicViewDto>();
     save = output<RelicViewDto>();
     delete = output<RelicViewDto>();
 
     constructor() {
-        // const form = new FormGroup({
-        //     name: new FormControl(''),
-        //     queries: new FormArray([new FormControl('')]),
-        // });
-
         signalSync(() => this.toRelicViewDto(), this.liveUpdate);
     }
+
+    dropped = (event: CdkDragDrop<unknown>) => {
+        this.queries.update((queries) => {
+            moveItemInArray(queries, event.previousIndex, event.currentIndex);
+            return queries;
+        });
+    };
+
+    sortPredicate = (index: number, _item: CdkDrag<number>) => {
+        return index !== this.queries().length - 1;
+    };
 
     toRelicViewDto(): RelicViewDto {
         return {
             uuid: this.view().uuid ?? getNewUuid(),
             name: this.name(),
-            queries: this.getValidQueries(),
+            queries: this.getValidUniqueQueries(),
         };
     }
 
-    expandQueries() {
-        if (!!this.queries().at(-1)?.()) {
+    queryChanged(index: number, value?: string) {
+        this.queries()[index] = value ?? '';
+
+        if (value && !!this.queries().at(-1)) {
             const clone = this.queries().slice();
-            const index = clone.length;
-            clone.push(linkedSignal(() => this.view().queries[index] ?? ''));
+            clone.push('');
             this.queries.set(clone);
         }
     }
 
-    getValidQueries() {
-        return this.queries()
-            .map((query) => query())
-            .filter(Boolean);
+    getValidUniqueQueries() {
+        return Array.from(new Set(this.queries().filter(Boolean)));
     }
 
     saveClicked() {

@@ -2,16 +2,24 @@
     <app-input label="Name" class="d-block mb-2">
         <input appInputControl type="text" [(ngModel)]="name" />
     </app-input>
-    @for (query of queries(); track $index) {
-        <app-autosuggest
-            [label]="'Filter'"
-            [(model)]="query"
-            (modelChange)="expandQueries()"
-            [items]="relicProperties"
-            class="mb-2 d-block"
-            [strategy]="'string'"
-        />
-    }
+    <div cdkDropList (cdkDropListDropped)="dropped($event)" [cdkDropListSortPredicate]="sortPredicate">
+        @for (query of queries(); track $index) {
+            <div class="d-flex mb-2" cdkDrag>
+                <app-autosuggest
+                    [label]="'Filter'"
+                    [model]="query"
+                    (modelChange)="queryChanged($index, $event)"
+                    [items]="relicProperties"
+                    class="flex-grow-1"
+                    [strategy]="'string'"
+                />
+                <button class="btn btn-sm cursor-draggable" cdkDragHandle [class.d-none]="!query">
+                    <i class="bi bi-list"></i>
+                    drag
+                </button>
+            </div>
+        }
+    </div>
 
     <div class="d-flex justify-content-between mt-3">
         <button class="btn btn-outline-primary" (click)="saveClicked()">

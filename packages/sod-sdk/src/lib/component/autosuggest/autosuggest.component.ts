@@ -1,4 +1,4 @@
-import {JsonPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {Component, computed, ElementRef, inject, input, model, output, signal, TemplateRef, viewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {DropdownCommand, DropdownComponent} from '@sod/sdk/src/lib/component/dropdown/dropdown.component';
@@ -9,7 +9,7 @@ import {SearchService} from '@sod/sdk/src/lib/service/search-service';
 
 @Component({
     selector: 'app-autosuggest',
-    imports: [DropdownComponent, InputComponent, FormsModule, InputControlDirective, NgTemplateOutlet, JsonPipe],
+    imports: [DropdownComponent, InputComponent, FormsModule, InputControlDirective, NgTemplateOutlet],
     templateUrl: './autosuggest.component.html',
     styleUrl: './autosuggest.component.scss',
 })
