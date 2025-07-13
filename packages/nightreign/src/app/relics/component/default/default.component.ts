@@ -38,7 +38,6 @@ export class DefaultComponent {
     editRelic = model<RelicDto | undefined>(undefined);
     editRelicViewChanges = signal<RelicViewDto | undefined>(undefined);
 
-    count = model(1);
     uniqueQueries = computed(() => {
         return this.view()?.queries ?? [];
     });
@@ -49,11 +48,10 @@ export class DefaultComponent {
         const relics = this.relicsService.relics();
         const activeView = this.view();
 
-        return activeView?.queries.length ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault(), this.count()) : relics;
+        return activeView?.queries.length ? this.relicFilterService.filter(relics, this.selectedQueriesOrDefault()) : relics;
     });
 
     createNewRelic = createNewRelic;
-    createNewRelicView = createNewRelicView;
 
     saveRelic(relic: RelicDto) {
         this.relicsService.updateRelic(relic);

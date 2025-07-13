@@ -8,12 +8,25 @@ const escapeRegex = (value: string) => (RegExp as any).escape(value);
 export class RelicFilterService {
     searchService = inject(SearchService);
 
-    filter(relics: RelicsStore, queries: string[], count: number): RelicsStore {
+    filter(relics: RelicsStore, queries: string[]): RelicsStore {
         const search = queries.map((query) => (haystack: string[]) => this.searchService.search(query, haystack));
+        const matches: RelicsStore[] = [];
 
-        return relics.filter((relic) => {
-            return new Set(search.flatMap((inner) => inner(relic.properties))).size >= count;
-        });
+        for (const relic of relics) {
+            const count = new Set(search.flatMap((inner) => inner(relic.properties))).size;
+
+            if (!count) {
+                continue;
+            }
+
+            while (!matches[count]) {
+                matches.push([]);
+            }
+
+            matches[count].push(relic);
+        }
+
+        return matches.reverse().flat();
     }
 
     highlight(needles?: string[]): (haystack: string) => {value: string; class: string}[] {
